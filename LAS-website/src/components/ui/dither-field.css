@@ -1,0 +1,19 @@
+.dither-field {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.dither-field__teal {
+  fill: var(--teal);
+}
+
+.dither-field__ink {
+  fill: var(--ink-soft);
+}
+
+.dither-field--wave .dither-field__ink {
+  fill: var(--teal);
+  opacity: 0.5;
+}

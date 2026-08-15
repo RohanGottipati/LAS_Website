@@ -1,0 +1,27 @@
+{
+  "note": "Public-domain (CC0) open-access artwork from The Metropolitan Museum of Art. Run `npm run art:fetch` to regenerate public/art/*.webp and public/art/credits.json.",
+  "source": "https://collectionapi.metmuseum.org/public/collection/v1",
+  "assets": [
+    { "name": "hero-figure", "objectId": 437881, "width": 1500, "height": 1900, "position": "top" },
+    { "name": "grid-workshop", "objectId": 436141, "width": 1400, "height": 1050, "position": "centre" },
+    { "name": "grid-outing", "objectId": 436947, "width": 1400, "height": 1050, "position": "centre" },
+    { "name": "grid-studio", "objectId": 435882, "width": 1400, "height": 1050, "position": "centre" },
+    { "name": "grid-study", "objectId": 437159, "width": 1400, "height": 1050, "position": "centre" },
+    { "name": "framework-bg", "objectId": 437010, "width": 1920, "height": 1200, "position": "centre" },
+    { "name": "framework-card-a", "objectId": 437299, "width": 1000, "height": 720, "position": "centre" },
+    { "name": "framework-card-b", "objectId": 435991, "width": 900, "height": 1120, "position": "centre" },
+    { "name": "gallery-1", "objectId": 437879, "width": 900, "height": 1120, "position": "top" },
+    { "name": "gallery-2", "objectId": 437059, "width": 900, "height": 1120, "position": "top" },
+    { "name": "gallery-3", "objectId": 459027, "width": 900, "height": 1120, "position": "centre" },
+    { "name": "gallery-4", "objectId": 437398, "width": 900, "height": 1120, "position": "top" },
+    { "name": "gallery-5", "objectId": 910384, "width": 900, "height": 1120, "position": "centre" },
+    { "name": "gallery-6", "objectId": 747607, "width": 900, "height": 1120, "position": "top" },
+    { "name": "gallery-7", "objectId": 436122, "width": 900, "height": 1120, "position": "centre" },
+    { "name": "gallery-8", "objectId": 12108, "width": 900, "height": 1120, "position": "centre" },
+    { "name": "stats-collage", "objectId": 436840, "width": 1200, "height": 1500, "position": "top" },
+    { "name": "cta-cinematic", "objectId": 438817, "width": 1920, "height": 1080, "position": "centre" },
+    { "name": "research-tall", "objectId": 438490, "width": 1000, "height": 1400, "position": "centre" },
+    { "name": "research-detail", "objectId": 436162, "width": 900, "height": 640, "position": "centre" },
+    { "name": "finale-bg", "objectId": 438816, "width": 1920, "height": 1080, "position": "centre" }
+  ]
+}

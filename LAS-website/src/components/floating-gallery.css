@@ -1,0 +1,159 @@
+.gallery {
+  position: relative;
+  background: var(--paper-shade);
+  padding-block: clamp(90px, 13vh, 170px) clamp(140px, 22vh, 260px);
+  overflow: hidden;
+}
+
+.gallery__head {
+  display: grid;
+  gap: 16px;
+  max-width: min(100%, 560px);
+  margin-bottom: clamp(30px, 5vh, 60px);
+}
+
+.gallery__title {
+  font-size: var(--step-3);
+}
+
+.gallery__tiles {
+  position: relative;
+  width: var(--shell);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(14px, 2vw, 30px);
+}
+
+.gallery__tile {
+  display: grid;
+  gap: 10px;
+  will-change: transform;
+}
+
+.gallery__frame {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper-deep);
+  box-shadow: 0 40px 70px -50px rgb(0 0 0 / 45%);
+}
+
+.gallery__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery__tile:hover .gallery__frame img {
+  transform: scale(1.03);
+}
+
+.gallery__caption {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+}
+
+/* Deliberately irregular placement — the columns never line up as a grid. */
+.gallery__tile--1 {
+  grid-column: 1 / span 3;
+  margin-top: 30px;
+}
+.gallery__tile--2 {
+  grid-column: 4 / span 2;
+  margin-top: 130px;
+}
+.gallery__tile--3 {
+  grid-column: 6 / span 3;
+}
+.gallery__tile--4 {
+  grid-column: 9 / span 2;
+  margin-top: 90px;
+}
+.gallery__tile--5 {
+  grid-column: 11 / span 2;
+  margin-top: 10px;
+}
+.gallery__tile--6 {
+  grid-column: 2 / span 2;
+  margin-top: 40px;
+}
+.gallery__tile--7 {
+  grid-column: 5 / span 3;
+  margin-top: -20px;
+}
+.gallery__tile--8 {
+  grid-column: 9 / span 3;
+  margin-top: 20px;
+}
+
+.gallery__tile--1 .gallery__frame,
+.gallery__tile--4 .gallery__frame,
+.gallery__tile--7 .gallery__frame {
+  aspect-ratio: 4 / 5;
+}
+
+.gallery__tile--2 .gallery__frame,
+.gallery__tile--5 .gallery__frame,
+.gallery__tile--8 .gallery__frame {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery__tile--3 .gallery__frame,
+.gallery__tile--6 .gallery__frame {
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 1199px) {
+  /* Tablet: fewer floating elements, shallower travel. */
+  .gallery__tile--5,
+  .gallery__tile--8 {
+    display: none;
+  }
+
+  .gallery__tile--2 {
+    margin-top: 90px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery {
+    padding-bottom: clamp(80px, 12vh, 130px);
+  }
+
+  .gallery__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery__tile,
+  .gallery__tile--1,
+  .gallery__tile--2,
+  .gallery__tile--3,
+  .gallery__tile--4,
+  .gallery__tile--6,
+  .gallery__tile--7 {
+    grid-column: auto / span 1;
+    margin-top: 0;
+    will-change: auto;
+  }
+
+  .gallery__tile--5,
+  .gallery__tile--8 {
+    display: grid;
+    grid-column: auto / span 1;
+    margin-top: 0;
+  }
+
+  .gallery__frame,
+  .gallery__tile--1 .gallery__frame,
+  .gallery__tile--2 .gallery__frame,
+  .gallery__tile--3 .gallery__frame {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__tile:hover .gallery__frame img {
+    transform: none;
+  }
+}

@@ -1,0 +1,36 @@
+.monogram {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 34px;
+  height: 56px;
+  color: var(--paper);
+  flex: none;
+}
+
+.monogram__ribbon {
+  position: absolute;
+  inset: 0;
+  background: var(--teal);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+}
+
+.monogram__star {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+}
+
+.monogram--plain {
+  width: 30px;
+  height: 30px;
+  color: var(--teal);
+}
+
+.monogram--plain .monogram__star {
+  width: 30px;
+  height: 30px;
+  margin-top: 0;
+}

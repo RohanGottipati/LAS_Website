@@ -1,0 +1,130 @@
+.impact {
+  background: var(--paper);
+  padding-block: clamp(90px, 13vh, 170px);
+  overflow: hidden;
+}
+
+.impact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-areas: 'copy stats' 'collage stats';
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+}
+
+.impact__copy {
+  grid-area: copy;
+  display: grid;
+  gap: 18px;
+  max-width: min(100%, 480px);
+}
+
+.impact__title {
+  font-size: var(--step-3);
+}
+
+.impact__note {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  max-width: 30ch;
+}
+
+.impact__collage {
+  grid-area: collage;
+  max-width: 360px;
+  align-self: end;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 18px;
+  background: var(--paper-deep);
+}
+
+.impact__collage img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.impact__stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat {
+  border-radius: var(--radius);
+  padding: 22px 22px 20px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.stat:nth-child(1) {
+  grid-column: 1 / span 2;
+}
+
+.stat:nth-child(4) {
+  margin-top: 22px;
+}
+
+.stat:nth-child(5) {
+  grid-column: 1 / span 2;
+}
+
+.stat--teal {
+  background: var(--teal-pale);
+}
+.stat--butter {
+  background: var(--butter);
+}
+.stat--blush {
+  background: var(--blush);
+}
+.stat--sand {
+  background: color-mix(in srgb, var(--sand) 45%, var(--paper));
+}
+.stat--pale {
+  background: var(--paper-shade);
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__label {
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 1199px) {
+  .impact__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: 'copy collage' 'stats stats';
+  }
+
+  .impact__collage {
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .impact__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'copy' 'collage' 'stats';
+  }
+
+  .impact__copy {
+    max-width: none;
+  }
+
+  .stat:nth-child(4) {
+    margin-top: 0;
+  }
+}

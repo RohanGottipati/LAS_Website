@@ -1,0 +1,177 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: calc(var(--header-h) + 40px) 80px;
+  overflow: hidden;
+  background: var(--paper);
+  isolation: isolate;
+}
+
+.hero__art {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 46vw;
+  max-width: 780px;
+  z-index: -1;
+}
+
+.hero__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 22%;
+  transform-origin: 60% 40%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgb(0 0 0 / 45%) 8%,
+    #000 26%,
+    #000 100%
+  );
+  mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 45%) 8%, #000 26%, #000 100%);
+}
+
+.hero__dither {
+  position: absolute;
+  left: calc(var(--gutter) * -0.5);
+  bottom: 0;
+  width: min(720px, 62vw);
+  height: 260px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.hero__device {
+  position: absolute;
+  left: 12%;
+  bottom: -6px;
+  width: min(300px, 26vw);
+  z-index: 1;
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__copy {
+  max-width: min(56vw, 820px);
+}
+
+.hero__headline {
+  /* Sized so the four pre-split lines never wrap. */
+  font-size: clamp(1.75rem, 3.4vw, 4.1rem);
+  color: var(--ink);
+  max-width: none;
+}
+
+.hero__line {
+  white-space: nowrap;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.hero__link {
+  font-size: var(--step-0);
+  color: var(--ink-soft);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 26%, transparent);
+  padding-bottom: 2px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero__link:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* Pre-intro state: the loader covers this while the hero is being built. */
+.hero[data-started='false'] .hero__line > span {
+  transform: translateY(108%);
+}
+
+.hero[data-started='false'] .hero__actions {
+  opacity: 0;
+}
+
+@media (max-width: 1199px) {
+  .hero__copy {
+    max-width: min(62vw, 620px);
+  }
+
+  .hero__headline {
+    font-size: clamp(1.6rem, 3.9vw, 2.8rem);
+  }
+
+  .hero__art {
+    width: 44vw;
+  }
+
+  .hero__device {
+    left: 8%;
+    width: min(240px, 28vw);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    align-items: flex-end;
+    padding-block: calc(var(--header-h) + 24px) 34vh;
+    min-height: 92svh;
+  }
+
+  .hero__art {
+    width: 100%;
+    max-width: none;
+    inset: 0 0 auto 0;
+    height: 62svh;
+  }
+
+  .hero__art img {
+    object-position: 55% 18%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 96%);
+    mask-image: linear-gradient(to bottom, #000 40%, transparent 96%);
+  }
+
+  .hero__copy {
+    max-width: 100%;
+  }
+
+  .hero__headline {
+    font-size: clamp(1.5rem, 6.6vw, 2.4rem);
+  }
+
+  .hero__device {
+    left: auto;
+    right: var(--gutter);
+    bottom: 4vh;
+    width: 148px;
+  }
+
+  .hero__dither {
+    height: 180px;
+    width: 92vw;
+  }
+
+  .hero__actions {
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero[data-started='false'] .hero__line > span {
+    transform: none;
+  }
+
+  .hero[data-started='false'] .hero__actions {
+    opacity: 1;
+  }
+}

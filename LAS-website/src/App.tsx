@@ -1,65 +1,57 @@
-
-import './App.css'
+import { useCallback, useEffect, useState } from 'react'
+import { SitePreloader } from './components/SitePreloader'
+import { GlobalHeader } from './components/GlobalHeader'
+import { Hero } from './components/Hero'
+import { ToolsBridge } from './components/ToolsBridge'
+import { EcosystemGrid } from './components/EcosystemGrid'
+import { FrameworkScene } from './components/FrameworkScene'
+import { FloatingGallery } from './components/FloatingGallery'
+import { ImpactStats } from './components/ImpactStats'
+import { JoinCta } from './components/JoinCta'
+import { TeamEditorial } from './components/TeamEditorial'
+import { FaqSection } from './components/FaqSection'
+import { FinaleCta } from './components/FinaleCta'
+import { SiteFooter } from './components/SiteFooter'
+import { refreshScrollTriggersWhenSettled } from './lib/motion'
 
 function App() {
+  // `revealing` starts the hero choreography while the loader mask is still
+  // opening; `loaded` retires the loader from the tree.
+  const [revealing, setRevealing] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
+  const handleReveal = useCallback(() => setRevealing(true), [])
+  const handleComplete = useCallback(() => setLoaded(true), [])
+
+  useEffect(() => {
+    refreshScrollTriggersWhenSettled()
+  }, [])
+
   return (
-    <div className="page">
-      <header className="site-header">
-        <div className="brand">
-          <span className="brand-mark">LAS</span>
-          <span className="brand-text">Club</span>
-        </div>
-        <nav className="nav">
-          <a href="#about" className="nav-link">About</a>
-          <a href="#team" className="nav-link">Team</a>
-          <a href="#events" className="nav-link">Events</a>
-          <a href="#future-events" className="nav-link">Future Events</a>
-          <a href="#faq" className="nav-link">FAQ</a>
-        </nav>
-      </header>
+    <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
 
-      <main className="content">
-        <section id="about" className="section">
-          <h1>About LAS Club</h1>
-          <p>
-            We are a student-led club focused on learning, collaboration, and
-            community impact through projects, workshops, and events.
-          </p>
-        </section>
+      {!loaded && <SitePreloader onReveal={handleReveal} onComplete={handleComplete} />}
 
-        <section id="team" className="section">
-          <h2>Team</h2>
-          <p>
-            Meet the leaders and members who organize activities, mentor new
-            members, and keep the club moving forward.
-          </p>
-        </section>
+      <GlobalHeader revealed={revealing} />
 
-        <section id="events" className="section">
-          <h2>Events</h2>
-          <p>
-            From guest speakers to hands-on sessions, our events help members
-            grow skills and build connections.
-          </p>
-        </section>
-
-        <section id="future-events" className="section">
-          <h2>Future Events</h2>
-          <p>
-            Keep an eye out for upcoming workshops, social meetups, and
-            community projects planned for this semester.
-          </p>
-        </section>
-
-        <section id="faq" className="section">
-          <h2>FAQ</h2>
-          <p>
-            Have questions about membership, schedules, or how to join?
-            We have answers and would love to hear from you.
-          </p>
-        </section>
+      <main id="main">
+        <Hero start={revealing} />
+        <ToolsBridge />
+        <EcosystemGrid />
+        <FrameworkScene />
+        <FloatingGallery />
+        <ImpactStats />
+        <JoinCta />
+        <TeamEditorial />
+        <FaqSection />
+        <FinaleCta />
       </main>
-    </div>
+
+      <SiteFooter />
+    </>
   )
 }
 

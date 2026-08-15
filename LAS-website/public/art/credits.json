@@ -1,0 +1,194 @@
+{
+  "generatedBy": "scripts/fetch-artwork.mjs",
+  "credits": [
+    {
+      "asset": "hero-figure",
+      "title": "Young Woman with a Water Pitcher",
+      "artist": "Johannes Vermeer",
+      "date": "ca. 1662",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437881"
+    },
+    {
+      "asset": "grid-workshop",
+      "title": "The Dancing Class",
+      "artist": "Edgar Degas",
+      "date": "ca. 1870",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/436141"
+    },
+    {
+      "asset": "grid-outing",
+      "title": "Boating",
+      "artist": "Edouard Manet",
+      "date": "1874",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/436947"
+    },
+    {
+      "asset": "grid-studio",
+      "title": "Still Life with Apples and a Pot of Primroses",
+      "artist": "Paul Cézanne",
+      "date": "ca. 1890",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/435882"
+    },
+    {
+      "asset": "grid-study",
+      "title": "Young Woman Knitting",
+      "artist": "Berthe Morisot",
+      "date": "ca. 1883",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437159"
+    },
+    {
+      "asset": "framework-bg",
+      "title": "The Arrival in Bethlehem",
+      "artist": "Master of the Brussels Calling of Saint Matthew",
+      "date": "ca. 1540–50",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437010"
+    },
+    {
+      "asset": "framework-card-a",
+      "title": "Jalais Hill, Pontoise",
+      "artist": "Camille Pissarro",
+      "date": "1867",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437299"
+    },
+    {
+      "asset": "framework-card-b",
+      "title": "A Woman Reading",
+      "artist": "Camille Corot",
+      "date": "1869 and 1870",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/435991"
+    },
+    {
+      "asset": "gallery-1",
+      "title": "Study of a Young Woman",
+      "artist": "Johannes Vermeer",
+      "date": "ca. 1665–67",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437879"
+    },
+    {
+      "asset": "gallery-2",
+      "title": "Young Woman with a Pink",
+      "artist": "Hans Memling",
+      "date": "ca. 1485–90",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437059"
+    },
+    {
+      "asset": "gallery-3",
+      "title": "Portrait of a Woman, Possibly a Nun of San Secondo; (verso) Scene in Grisaille",
+      "artist": "Jacometto (Jacometto Veneziano)",
+      "date": "ca. 1485–95",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/459027"
+    },
+    {
+      "asset": "gallery-4",
+      "title": "Flora",
+      "artist": "Rembrandt (Rembrandt van Rijn)",
+      "date": "ca. 1654",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/437398"
+    },
+    {
+      "asset": "gallery-5",
+      "title": "A Book Peddler",
+      "artist": "Master of the Canesso Peddler",
+      "date": "ca. 1670–90",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/910384"
+    },
+    {
+      "asset": "gallery-6",
+      "title": "Woman Playing a Guitar",
+      "artist": "Simon Vouet",
+      "date": "ca. 1618",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/747607"
+    },
+    {
+      "asset": "gallery-7",
+      "title": "The Collector of Prints",
+      "artist": "Edgar Degas",
+      "date": "1866",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/436122"
+    },
+    {
+      "asset": "gallery-8",
+      "title": "Henry G. Marquand",
+      "artist": "John Singer Sargent",
+      "date": "1897",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/12108"
+    },
+    {
+      "asset": "stats-collage",
+      "title": "Self-Portrait with Two Pupils, Marie Gabrielle Capet (1761–1818) and Marie Marguerite Carraux de Rosemond (1765–1788)",
+      "artist": "Adélaïde Labille-Guiard",
+      "date": "1785",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/436840"
+    },
+    {
+      "asset": "cta-cinematic",
+      "title": "The Dance Class",
+      "artist": "Edgar Degas",
+      "date": "1874",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/438817"
+    },
+    {
+      "asset": "research-tall",
+      "title": "Interior of the Oude Kerk, Delft",
+      "artist": "Emanuel de Witte",
+      "date": "probably 1650",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/438490"
+    },
+    {
+      "asset": "research-detail",
+      "title": "Sulking",
+      "artist": "Edgar Degas",
+      "date": "ca. 1870",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/436162"
+    },
+    {
+      "asset": "finale-bg",
+      "title": "The Forest in Winter at Sunset",
+      "artist": "Théodore Rousseau",
+      "date": "ca. 1846–67",
+      "museum": "The Metropolitan Museum of Art",
+      "license": "CC0 1.0 (Public Domain)",
+      "url": "https://www.metmuseum.org/art/collection/search/438816"
+    }
+  ]
+}
