@@ -22,6 +22,9 @@ export function FrameworkScene() {
       const cards = select('[data-scene-card]')
 
       if (breakpoint === 'mobile' || prefersReducedMotion()) {
+        if (breakpoint !== 'mobile') {
+          gsap.set(cards, { xPercent: (index: number) => CARD_REST[index % CARD_REST.length] })
+        }
         revealLines(root, select('.scene__title .line-mask > span'))
         revealOnEnter(root, cards, { y: 24 })
         return
