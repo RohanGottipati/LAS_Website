@@ -88,14 +88,6 @@
   box-shadow: 0 30px 60px -40px rgb(0 0 0 / 55%);
 }
 
-.scene__card:nth-child(2) {
-  transform: translateX(-6%);
-}
-
-.scene__card:nth-child(3) {
-  transform: translateX(4%);
-}
-
 .scene__card h3 {
   font-family: var(--font-display);
   font-size: var(--step-1);
@@ -148,10 +140,7 @@
     justify-items: stretch;
   }
 
-  .scene__card,
-  .scene__card:nth-child(2),
-  .scene__card:nth-child(3) {
-    transform: none;
+  .scene__card {
     max-width: none;
   }
 }

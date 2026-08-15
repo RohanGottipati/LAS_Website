@@ -11,6 +11,9 @@ import './framework-scene.css'
  * single scrubbed timeline so the composition assembles as you scroll and takes
  * itself apart cleanly on the way back up.
  */
+/** Resting horizontal offset per card, in % of card width. */
+const CARD_REST = [0, -6, 4]
+
 export function FrameworkScene() {
   const breakpoint = useBreakpoint()
 
@@ -51,10 +54,16 @@ export function FrameworkScene() {
         )
 
       cards.forEach((card, index) => {
+        // Cards rest on a staggered offset, so entrance values compose with it.
+        const rest = CARD_REST[index % CARD_REST.length]
         timeline.fromTo(
           card,
-          { x: (index % 2 === 0 ? -70 : 70) * scale, y: 40 * scale, opacity: 0 },
-          { x: 0, y: 0, opacity: 1, duration: 0.28, ease: motion.revealEase },
+          {
+            xPercent: rest + (index % 2 === 0 ? -18 : 18) * scale,
+            y: 40 * scale,
+            opacity: 0,
+          },
+          { xPercent: rest, y: 0, opacity: 1, duration: 0.28, ease: motion.revealEase },
           0.35 + index * 0.16,
         )
       })
