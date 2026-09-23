@@ -50,7 +50,9 @@ export function Footer() {
               {socials.map((s) =>
               <li key={s.label}>
                   <a
-                  href="#newsletter"
+                  href={s.url ?? '#newsletter'}
+                  target={s.url ? '_blank' : undefined}
+                  rel={s.url ? 'noopener noreferrer' : undefined}
                   className="group flex items-center justify-between gap-4 border-b border-white/[0.06] pb-3 text-[14px] text-zinc-400 transition-colors duration-300 hover:text-zinc-100">
                   
                     <span>{s.label}</span>

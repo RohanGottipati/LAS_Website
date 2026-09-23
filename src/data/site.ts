@@ -157,7 +157,7 @@ export const faqs = [
 
 
 export const socials = [
-{ label: 'Instagram', handle: '@laurieranalytics' },
-{ label: 'LinkedIn', handle: '/company/las' },
+{ label: 'Instagram', handle: '@laurier_analytics', url: 'https://www.instagram.com/laurier_analytics' },
+{ label: 'LinkedIn', handle: '/company/laurier-analytics-society-las', url: 'https://www.linkedin.com/company/laurier-analytics-society-las' },
 { label: 'Discord', handle: 'discord.gg/las' },
 { label: 'GitHub', handle: '/laurier-analytics' }];
