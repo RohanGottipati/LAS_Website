@@ -1,55 +1,92 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
-import { impactBars, impactSeries } from '../data/site';
+import { impactEvents, impactSeries } from '../data/site';
 
-const BLOCK = '\u2588';
-
-function AsciiBar({
+function EventItem({
   label,
-  value,
-  meta,
-  index
+  index,
+  active,
+  onActivate,
+  onDeactivate
 
 
 
 
-
-}: {label: string;value: number;meta: string;index: number;}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const cells = 34;
-  const filled = Math.round(value / 100 * cells);
-
+}: {label: string;index: number;active: boolean;onActivate: () => void;onDeactivate: () => void;}) {
   return (
-    <div ref={ref} className="group border-t border-white/10 py-5 first:border-t-0">
-      <div className="flex items-baseline justify-between gap-4">
-        <span className="font-heading text-sm text-zinc-200 transition-colors duration-300 group-hover:text-white">
-          {label}
-        </span>
-        <span className="font-mono text-[11px] text-zinc-500">{meta}</span>
-      </div>
-      <div className="mt-3 flex items-center gap-4">
-        <div className="flex select-none overflow-hidden font-mono text-[13px] leading-none tracking-[0.06em]">
-          {Array.from({ length: cells }).map((_, i) =>
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, y: 6 }}
-            animate={inView ? { opacity: i < filled ? 1 : 0.16, y: 0 } : {}}
-            transition={{
-              duration: 0.35,
-              delay: index * 0.09 + i * 0.014,
-              ease: 'easeOut'
-            }}
-            className="text-zinc-200">
-            
-              {BLOCK}
-            </motion.span>
-          )}
-        </div>
-        <span className="ml-auto font-mono text-[12px] tabular-nums text-zinc-400">{value}%</span>
-      </div>
+    <div
+      role="button"
+      tabIndex={0}
+      onMouseEnter={onActivate}
+      onMouseLeave={onDeactivate}
+      onFocus={onActivate}
+      onBlur={onDeactivate}
+      className="group flex items-center gap-4 border-t border-white/10 py-5 outline-none first:border-t-0 cursor-pointer">
+
+      <span
+        className={`h-4 w-px transition-colors duration-300 ${
+        active ? 'bg-zinc-200' : 'bg-transparent'}`
+        } />
+
+      <span className="font-mono text-[11px] tabular-nums text-zinc-600">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      <span
+        className={`font-heading text-sm transition-colors duration-300 ${
+        active ? 'text-white' : 'text-zinc-200 group-hover:text-white'}`
+        }>
+
+        {label}
+      </span>
+    </div>);
+
+}
+
+function EventGallery({ label, images }: {label: string;images: string[];}) {
+  return (
+    <div className="relative h-[300px] w-full">
+      <p className="absolute left-0 top-0 z-10 font-mono text-[10.5px] uppercase tracking-[0.22em] text-zinc-500">
+        {label}
+      </p>
+      <motion.div
+        className="absolute inset-0 mt-10"
+        initial="hidden"
+        animate="shown"
+        variants={{
+          hidden: {},
+          shown: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
+        }}>
+
+        {images.map((src, i) => {
+          const offset = i - (images.length - 1) / 2;
+          return (
+            <motion.div
+              key={src}
+              className="absolute left-1/2 top-1/2 h-[188px] w-[264px] overflow-hidden border border-white/10 bg-[#0b0b0d] shadow-2xl shadow-black/60"
+              style={{ zIndex: i }}
+              variants={{
+                hidden: { opacity: 0, y: 28, rotate: 0, x: '-50%' },
+                shown: {
+                  opacity: 1,
+                  y: `calc(-50% + ${offset * 10}px)`,
+                  x: `calc(-50% + ${offset * 26}px)`,
+                  rotate: offset * 3.5
+                }
+              }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
+
+              <img
+                src={src}
+                alt={`${label} photo ${i + 1}`}
+                loading="lazy"
+                className="h-full w-full object-cover" />
+
+            </motion.div>);
+
+        })}
+      </motion.div>
     </div>);
 
 }
@@ -70,7 +107,7 @@ function GrowthChart() {
   const area = `${line} L${points[points.length - 1][0]},${h - pad} L${points[0][0]},${h - pad} Z`;
 
   return (
-    <div ref={ref} className="border border-white/10 bg-[#0b0b0d] p-6">
+    <div ref={ref}>
       <div className="flex items-baseline justify-between">
         <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-zinc-500">
           Students reached / year
@@ -95,7 +132,7 @@ function GrowthChart() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.7 }} />
-        
+
         <motion.path
           d={line}
           fill="none"
@@ -104,7 +141,7 @@ function GrowthChart() {
           initial={{ pathLength: 0 }}
           animate={inView ? { pathLength: 1 } : {}}
           transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }} />
-        
+
         {points.map(([x, y], i) =>
         <motion.circle
           key={i}
@@ -130,6 +167,8 @@ function GrowthChart() {
 }
 
 export function Impact() {
+  const [activeEvent, setActiveEvent] = useState<number | null>(null);
+
   return (
     <section id="impact" className="border-b border-white/10 py-24 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
@@ -137,18 +176,52 @@ export function Impact() {
           index="02 / Impact"
           title="What a year of LAS looks like."
           description="Every number below comes from our own event logs and post-event surveys. We publish the methodology in the newsletter each term." />
-        
+
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
           <Reveal>
             <div>
-              {impactBars.map((b, i) =>
-              <AsciiBar key={b.label} {...b} index={i} />
+              {impactEvents.map((e, i) =>
+              <EventItem
+                key={e.label}
+                label={e.label}
+                index={i}
+                active={activeEvent === i}
+                onActivate={() => setActiveEvent(i)}
+                onDeactivate={() => setActiveEvent(null)} />
+
               )}
             </div>
           </Reveal>
           <Reveal delay={0.12}>
-            <GrowthChart />
+            <div className="border border-white/10 bg-[#0b0b0d] p-6">
+              <AnimatePresence mode="wait">
+                {activeEvent === null ?
+                <motion.div
+                  key="chart"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}>
+
+                    <GrowthChart />
+                  </motion.div> :
+
+                <motion.div
+                  key={`event-${activeEvent}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}>
+
+                    <EventGallery
+                    label={impactEvents[activeEvent].label}
+                    images={impactEvents[activeEvent].images} />
+
+                  </motion.div>
+                }
+              </AnimatePresence>
+            </div>
           </Reveal>
         </div>
       </div>

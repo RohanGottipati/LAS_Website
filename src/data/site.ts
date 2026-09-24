@@ -19,12 +19,57 @@ export const stats = [
 { value: 96, suffix: '%', label: 'Would return', detail: 'post-event survey, 2025' }];
 
 
-export const impactBars = [
-{ label: 'Workshop attendance', value: 92, meta: '1,840 seats filled' },
-{ label: 'Case comp participation', value: 74, meta: '312 competitors' },
-{ label: 'Industry partners', value: 61, meta: '18 companies' },
-{ label: 'Mentorship matches', value: 83, meta: '146 pairs' },
-{ label: 'Job / co-op placements', value: 47, meta: '71 reported offers' }];
+export const impactEvents = [
+{
+  label: 'Event 1',
+  images: [
+  'https://picsum.photos/seed/las-1-1/600/400',
+  'https://picsum.photos/seed/las-1-2/600/400',
+  'https://picsum.photos/seed/las-1-3/600/400',
+  'https://picsum.photos/seed/las-1-4/600/400',
+  'https://picsum.photos/seed/las-1-5/600/400']
+
+},
+{
+  label: 'Event 2',
+  images: [
+  'https://picsum.photos/seed/las-2-1/600/400',
+  'https://picsum.photos/seed/las-2-2/600/400',
+  'https://picsum.photos/seed/las-2-3/600/400',
+  'https://picsum.photos/seed/las-2-4/600/400',
+  'https://picsum.photos/seed/las-2-5/600/400']
+
+},
+{
+  label: 'Event 3',
+  images: [
+  'https://picsum.photos/seed/las-3-1/600/400',
+  'https://picsum.photos/seed/las-3-2/600/400',
+  'https://picsum.photos/seed/las-3-3/600/400',
+  'https://picsum.photos/seed/las-3-4/600/400',
+  'https://picsum.photos/seed/las-3-5/600/400']
+
+},
+{
+  label: 'Event 4',
+  images: [
+  'https://picsum.photos/seed/las-4-1/600/400',
+  'https://picsum.photos/seed/las-4-2/600/400',
+  'https://picsum.photos/seed/las-4-3/600/400',
+  'https://picsum.photos/seed/las-4-4/600/400',
+  'https://picsum.photos/seed/las-4-5/600/400']
+
+},
+{
+  label: 'Event 5',
+  images: [
+  'https://picsum.photos/seed/las-5-1/600/400',
+  'https://picsum.photos/seed/las-5-2/600/400',
+  'https://picsum.photos/seed/las-5-3/600/400',
+  'https://picsum.photos/seed/las-5-4/600/400',
+  'https://picsum.photos/seed/las-5-5/600/400']
+
+}];
 
 
 export const impactSeries = [
