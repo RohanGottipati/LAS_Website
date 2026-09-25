@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
@@ -8,26 +8,33 @@ function EventItem({
   label,
   index,
   active,
+  pinned,
   onActivate,
-  onDeactivate
-
-
-
-
-}: {label: string;index: number;active: boolean;onActivate: () => void;onDeactivate: () => void;}) {
+  onDeactivate,
+  onToggle
+}: {label: string;index: number;active: boolean;pinned: boolean;onActivate: () => void;onDeactivate: () => void;onToggle: () => void;}) {
+  const highlighted = active || pinned;
   return (
     <div
       role="button"
       tabIndex={0}
+      aria-pressed={pinned}
       onMouseEnter={onActivate}
       onMouseLeave={onDeactivate}
       onFocus={onActivate}
       onBlur={onDeactivate}
+      onClick={onToggle}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onToggle();
+        }
+      }}
       className="group flex items-center gap-4 border-t border-white/10 py-5 outline-none first:border-t-0 cursor-pointer">
 
       <span
         className={`h-4 w-px transition-colors duration-300 ${
-        active ? 'bg-zinc-200' : 'bg-transparent'}`
+        highlighted ? 'bg-zinc-200' : 'bg-transparent'}`
         } />
 
       <span className="font-mono text-[11px] tabular-nums text-zinc-600">
@@ -35,47 +42,57 @@ function EventItem({
       </span>
       <span
         className={`font-heading text-sm transition-colors duration-300 ${
-        active ? 'text-white' : 'text-zinc-200 group-hover:text-white'}`
+        highlighted ? 'text-white' : 'text-zinc-200 group-hover:text-white'}`
         }>
 
         {label}
       </span>
+      {pinned &&
+      <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
+          Pinned
+        </span>
+      }
     </div>);
 
 }
 
 function EventGallery({ label, images }: {label: string;images: string[];}) {
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const id = setInterval(() => setStep((s) => s + 1), 3000);
+    return () => clearInterval(id);
+  }, [images.length]);
+
+  const len = images.length;
+
   return (
-    <div className="relative h-[300px] w-full">
+    <div className="relative h-[400px] w-full">
       <p className="absolute left-0 top-0 z-10 font-mono text-[10.5px] uppercase tracking-[0.22em] text-zinc-500">
         {label}
       </p>
-      <motion.div
-        className="absolute inset-0 mt-10"
-        initial="hidden"
-        animate="shown"
-        variants={{
-          hidden: {},
-          shown: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
-        }}>
-
+      <div className="absolute inset-0 mt-10">
         {images.map((src, i) => {
-          const offset = i - (images.length - 1) / 2;
+          const slot = (i + step) % len;
+          const offset = slot - (len - 1) / 2;
           return (
             <motion.div
               key={src}
-              className="absolute left-1/2 top-1/2 h-[188px] w-[264px] overflow-hidden border border-white/10 bg-[#0b0b0d] shadow-2xl shadow-black/60"
-              style={{ zIndex: i }}
-              variants={{
-                hidden: { opacity: 0, y: 28, rotate: 0, x: '-50%' },
-                shown: {
-                  opacity: 1,
-                  y: `calc(-50% + ${offset * 10}px)`,
-                  x: `calc(-50% + ${offset * 26}px)`,
-                  rotate: offset * 3.5
-                }
+              className="absolute left-1/2 top-1/2 h-[250px] w-[356px] overflow-hidden border border-white/10 bg-[#0b0b0d] shadow-2xl shadow-black/60"
+              style={{ zIndex: slot }}
+              initial={{ opacity: 0, y: 28, rotate: 0, x: '-50%' }}
+              animate={{
+                opacity: 1,
+                y: `calc(-50% + ${offset * 12}px)`,
+                x: `calc(-50% + ${offset * 30}px)`,
+                rotate: offset * 3.5
               }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
+              transition={{
+                duration: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+                delay: step === 0 ? 0.05 + i * 0.12 : 0
+              }}>
 
               <img
                 src={src}
@@ -86,7 +103,7 @@ function EventGallery({ label, images }: {label: string;images: string[];}) {
             </motion.div>);
 
         })}
-      </motion.div>
+      </div>
     </div>);
 
 }
@@ -168,6 +185,8 @@ function GrowthChart() {
 
 export function Impact() {
   const [activeEvent, setActiveEvent] = useState<number | null>(null);
+  const [pinnedEvent, setPinnedEvent] = useState<number | null>(null);
+  const displayed = activeEvent ?? pinnedEvent;
 
   return (
     <section id="impact" className="border-b border-white/10 py-24 sm:py-32">
@@ -187,8 +206,10 @@ export function Impact() {
                 label={e.label}
                 index={i}
                 active={activeEvent === i}
+                pinned={pinnedEvent === i}
                 onActivate={() => setActiveEvent(i)}
-                onDeactivate={() => setActiveEvent(null)} />
+                onDeactivate={() => setActiveEvent(null)}
+                onToggle={() => setPinnedEvent((prev) => prev === i ? null : i)} />
 
               )}
             </div>
@@ -196,7 +217,7 @@ export function Impact() {
           <Reveal delay={0.12}>
             <div className="border border-white/10 bg-[#0b0b0d] p-6">
               <AnimatePresence mode="wait">
-                {activeEvent === null ?
+                {displayed === null ?
                 <motion.div
                   key="chart"
                   initial={{ opacity: 0 }}
@@ -208,15 +229,15 @@ export function Impact() {
                   </motion.div> :
 
                 <motion.div
-                  key={`event-${activeEvent}`}
+                  key={`event-${displayed}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.25 }}>
 
                     <EventGallery
-                    label={impactEvents[activeEvent].label}
-                    images={impactEvents[activeEvent].images} />
+                    label={impactEvents[displayed].label}
+                    images={impactEvents[displayed].images} />
 
                   </motion.div>
                 }
