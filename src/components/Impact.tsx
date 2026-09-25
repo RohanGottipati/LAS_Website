@@ -58,14 +58,23 @@ function EventItem({
 
 function EventGallery({ label, images }: {label: string;images: string[];}) {
   const [step, setStep] = useState(0);
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<string | null>(null);
+  const len = images.length;
+  const paused = hovered !== null || lightbox !== null;
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (len <= 1 || paused) return;
     const id = setInterval(() => setStep((s) => s + 1), 3000);
     return () => clearInterval(id);
-  }, [images.length]);
+  }, [len, paused]);
 
-  const len = images.length;
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {if (e.key === 'Escape') setLightbox(null);};
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightbox]);
 
   return (
     <div className="relative h-[400px] w-full">
@@ -76,22 +85,40 @@ function EventGallery({ label, images }: {label: string;images: string[];}) {
         {images.map((src, i) => {
           const slot = (i + step) % len;
           const offset = slot - (len - 1) / 2;
+          const isHovered = hovered === i;
           return (
             <motion.div
               key={src}
-              className="absolute left-1/2 top-1/2 h-[250px] w-[356px] overflow-hidden border border-white/10 bg-[#0b0b0d] shadow-2xl shadow-black/60"
-              style={{ zIndex: slot }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${label} photo ${i + 1}`}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              onFocus={() => setHovered(i)}
+              onBlur={() => setHovered(null)}
+              onClick={() => setLightbox(src)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setLightbox(src);
+                }
+              }}
+              className={`absolute left-1/2 top-1/2 h-[250px] w-[356px] cursor-pointer overflow-hidden border bg-[#0b0b0d] shadow-2xl shadow-black/60 outline-none ${
+              isHovered ? 'border-white ring-2 ring-white/80' : 'border-white/10'}`
+              }
+              style={{ zIndex: isHovered ? len + 1 : slot }}
               initial={{ opacity: 0, y: 28, rotate: 0, x: '-50%' }}
               animate={{
                 opacity: 1,
                 y: `calc(-50% + ${offset * 12}px)`,
                 x: `calc(-50% + ${offset * 30}px)`,
-                rotate: offset * 3.5
+                rotate: isHovered ? 0 : offset * 3.5,
+                scale: isHovered ? 1.06 : 1
               }}
               transition={{
                 duration: 0.6,
                 ease: [0.16, 1, 0.3, 1],
-                delay: step === 0 ? 0.05 + i * 0.12 : 0
+                delay: step === 0 && !isHovered ? 0.05 + i * 0.12 : 0
               }}>
 
               <img
@@ -104,6 +131,39 @@ function EventGallery({ label, images }: {label: string;images: string[];}) {
 
         })}
       </div>
+
+      <AnimatePresence>
+        {lightbox &&
+        <motion.div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true">
+
+            <button
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+            className="absolute right-6 top-6 z-10 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-300 transition-colors hover:text-white">
+
+              Close ✕
+            </button>
+            <motion.img
+            src={lightbox}
+            alt={label}
+            className="max-h-[85vh] max-w-[90vw] border border-white/10 object-contain shadow-2xl shadow-black/60"
+            initial={{ scale: 0.92, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.92, opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => e.stopPropagation()} />
+
+          </motion.div>
+        }
+      </AnimatePresence>
     </div>);
 
 }
