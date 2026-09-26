@@ -12,6 +12,24 @@ dist
 dist-ssr
 *.local
 
+# Secrets / environment — never commit real credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local tooling / agent config (may contain tokens or machine-specific paths)
+.mcp.json
+.claude/
+.agents/
+skills-lock.json
+
+# Supabase local stack
+.branches
+.temp
+supabase/.temp
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

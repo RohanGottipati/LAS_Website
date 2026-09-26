@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Loader2, ArrowRight, AlertCircle } from 'lucide-react';
 import { AsciiField } from './AsciiField';
 import { Reveal } from './Reveal';
+import { subscribe } from '../lib/supabase';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -14,17 +15,35 @@ interface NewsletterProps {
 export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<Status>('idle');
+  const [errorMsg, setErrorMsg] = useState('Enter a valid email address to continue.');
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === 'loading') return;
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    const trimmed = email.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
     if (!valid) {
+      setErrorMsg('Enter a valid email address to continue.');
       setStatus('error');
       return;
     }
     setStatus('loading');
-    window.setTimeout(() => setStatus('success'), 1200);
+    try {
+      const result = await subscribe({
+        email: trimmed,
+        type: 'newsletter',
+        source: 'newsletter_section',
+      });
+      if (result.ok) {
+        setStatus('success');
+      } else {
+        setErrorMsg(result.error ?? 'Something went wrong. Please try again.');
+        setStatus('error');
+      }
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.');
+      setStatus('error');
+    }
   };
 
   return (
@@ -135,7 +154,7 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
                     role="alert"
                   >
                     <AlertCircle className="h-3.5 w-3.5" />
-                    Enter a valid email address to continue.
+                    {errorMsg}
                   </motion.p>
                 ) : null}
               </AnimatePresence>
