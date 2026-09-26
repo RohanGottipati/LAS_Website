@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center border border-gold/35 font-mono text-[11px] text-gold">
+              <span className="grid h-9 w-9 place-items-center border border-cyan/35 font-mono text-[11px] text-cyan">
                 LAS
               </span>
               <span className="font-heading text-sm text-paper">Laurier Analytics Society</span>
@@ -22,7 +22,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Footer">
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-gold/70">Sections</p>
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-cyan/70">Sections</p>
             <ul className="mt-5 space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -30,7 +30,7 @@ export function Footer() {
                     href={link.href}
                     className="group inline-flex items-center gap-2 text-[14px] text-paper/55 transition-colors duration-300 hover:text-paper"
                   >
-                    <span className="h-px w-0 bg-gold transition-all duration-300 group-hover:w-4" />
+                    <span className="h-px w-0 bg-cyan transition-all duration-300 group-hover:w-4" />
                     {link.label}
                   </a>
                 </li>
@@ -39,7 +39,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-gold/70">Elsewhere</p>
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-cyan/70">Elsewhere</p>
             <ul className="mt-5 space-y-3">
               {socials.map((s) => (
                 <li key={s.label}>
@@ -50,7 +50,7 @@ export function Footer() {
                     className="group flex items-center justify-between gap-4 border-b border-paper/[0.06] pb-3 text-[14px] text-paper/55 transition-colors duration-300 hover:text-paper"
                   >
                     <span>{s.label}</span>
-                    <span className="flex items-center gap-1.5 font-mono text-[11px] text-paper/35 transition-colors duration-300 group-hover:text-gold">
+                    <span className="flex items-center gap-1.5 font-mono text-[11px] text-paper/35 transition-colors duration-300 group-hover:text-cyan">
                       {s.handle}
                       <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </span>
@@ -67,7 +67,7 @@ export function Footer() {
           </p>
           <a
             href="#top"
-            className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/45 transition-colors duration-300 hover:text-gold"
+            className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/45 transition-colors duration-300 hover:text-cyan"
           >
             Back to top
             <ArrowUp className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-1" />
@@ -83,7 +83,7 @@ export function Footer() {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="select-none overflow-hidden px-5 pb-6 sm:px-8"
       >
-        <p className="whitespace-nowrap font-heading text-[18vw] font-semibold leading-[0.8] tracking-[-0.05em] text-gold/[0.07]">
+        <p className="whitespace-nowrap font-heading text-[18vw] font-semibold leading-[0.8] tracking-[-0.05em] text-cyan/[0.07]">
           ANALYTICS
         </p>
       </motion.div>

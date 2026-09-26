@@ -40,12 +40,12 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
           interactive={false}
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(9,8,14,0.55)_0%,#09080e_72%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(7,11,13,0.55)_0%,#070b0d_72%)]" />
 
       <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold/80">07 / Newsletter</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80">07 / Newsletter</p>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-5 font-heading text-3xl font-semibold tracking-tight text-paper sm:text-4xl">
@@ -69,9 +69,9 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex items-center gap-4 border border-gold/25 bg-gold/[0.06] px-6 py-5 text-left"
+                    className="flex items-center gap-4 border border-cyan/25 bg-cyan/[0.06] px-6 py-5 text-left"
                   >
-                    <span className="grid h-9 w-9 shrink-0 place-items-center bg-gold text-ink">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center bg-cyan text-ink">
                       <Check className="h-4 w-4" />
                     </span>
                     <div>
@@ -106,7 +106,7 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
                       className={`h-12 flex-1 border bg-paper/[0.03] px-4 font-mono text-[13px] text-paper outline-none transition-all duration-300 placeholder:text-paper/30 focus:bg-paper/[0.06] ${
                         status === 'error'
                           ? 'border-heat/70 focus:border-heat'
-                          : 'border-paper/15 focus:border-gold/55'
+                          : 'border-paper/15 focus:border-cyan/55'
                       }`}
                     />
                     <button type="submit" disabled={status === 'loading'} className="btn-signal disabled:opacity-70">

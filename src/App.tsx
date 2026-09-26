@@ -11,6 +11,7 @@ import { Sponsors } from './components/Sponsors';
 import { Faq } from './components/Faq';
 import { Newsletter } from './components/Newsletter';
 import { Footer } from './components/Footer';
+import { SmoothScroll } from './components/SmoothScroll';
 
 type AsciiDensity = 'fine' | 'standard' | 'bold';
 
@@ -33,21 +34,24 @@ export function App({ asciiDensity = 'standard', showSponsors = true }: AppProps
   const cell = DENSITY[asciiDensity];
 
   return (
-    <div className="min-h-screen w-full bg-ink font-heading text-paper antialiased">
-      <Nav />
-      <main>
-        <Hero cellWidth={cell.w} cellHeight={cell.h} />
-        <About />
-        <Stats />
-        <Impact />
-        <Initiatives />
-        <Team />
-        <Datathon cellWidth={cell.w + 1} cellHeight={cell.h + 1} />
-        {showSponsors ? <Sponsors /> : null}
-        <Faq />
-        <Newsletter cellWidth={cell.w} cellHeight={cell.h} />
-      </main>
-      <Footer />
-    </div>);
+    <SmoothScroll>
+      <div className="min-h-screen w-full bg-ink font-heading text-paper antialiased">
+        <Nav />
+        <main>
+          <Hero cellWidth={cell.w} cellHeight={cell.h} />
+          <About />
+          <Stats />
+          <Impact />
+          <Initiatives />
+          <Team />
+          <Datathon cellWidth={cell.w + 1} cellHeight={cell.h + 1} />
+          {showSponsors ? <Sponsors /> : null}
+          <Faq />
+          <Newsletter cellWidth={cell.w} cellHeight={cell.h} />
+        </main>
+        <Footer />
+      </div>
+    </SmoothScroll>
+  );
 
 }

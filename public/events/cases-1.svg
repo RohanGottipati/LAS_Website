@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="Case Circuit Opening session">
-  <rect width="600" height="400" fill="#100f16"/>
+  <rect width="600" height="400" fill="#0c1214"/>
   <rect x="22" y="22" width="556" height="356" fill="none" stroke="#5c4588" stroke-width="1"/>
   <path d="M22 118 H578" stroke="#5c4588" stroke-opacity="0.45"/>
   <path d="M22 178 H578" stroke="#5c4588" stroke-opacity="0.25"/>
-  <circle cx="120" cy="230" r="46" fill="none" stroke="#c9a227" stroke-opacity="0.18"/>
-  <text x="44" y="64" fill="#c9a227" fill-opacity="0.85" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="4">LAS / COMPETITION</text>
-  <text x="44" y="168" fill="#ece9e2" font-family="Georgia, 'Times New Roman', serif" font-size="36">Case Circuit</text>
-  <text x="44" y="208" fill="#ece9e2" fill-opacity="0.62" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="2">01  OPENING SESSION</text>
-  <text x="44" y="348" fill="#ece9e2" fill-opacity="0.35" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="3">PLACEHOLDER  ·  SWAP FOR REAL PHOTO</text>
+  <circle cx="120" cy="230" r="46" fill="none" stroke="#5EEAD4" stroke-opacity="0.18"/>
+  <text x="44" y="64" fill="#5EEAD4" fill-opacity="0.85" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="4">LAS / COMPETITION</text>
+  <text x="44" y="168" fill="#e6eef0" font-family="Georgia, 'Times New Roman', serif" font-size="36">Case Circuit</text>
+  <text x="44" y="208" fill="#e6eef0" fill-opacity="0.62" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="2">01  OPENING SESSION</text>
+  <text x="44" y="348" fill="#e6eef0" fill-opacity="0.35" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="3">PLACEHOLDER  ·  SWAP FOR REAL PHOTO</text>
 </svg>

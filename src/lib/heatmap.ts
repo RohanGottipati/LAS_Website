@@ -1,12 +1,12 @@
-/** Olive → brass sequential map with a magenta bias in the far field. */
+/** Mint → cyan sequential map, sampled from LAS print collateral. */
 export function heatmap(v: number, nx = 0.5, ny = 0.5): [number, number, number] {
   const t = clamp(v);
   const spatial = clamp(nx * 0.35 + ny * 0.55);
-  let hue = 78 - t * 30 - spatial * 110 * Math.pow(t, 1.15);
+  let hue = 174 - t * 20 - spatial * 16;
   hue = ((hue % 360) + 360) % 360;
-  const s = 0.44 + t * 0.28;
-  const val = 0.42 + t * 0.5;
-  return hsv2rgb(hue, Math.min(0.58, s), Math.min(0.9, val));
+  const s = 0.36 + t * 0.24;
+  const val = 0.38 + t * 0.52;
+  return hsv2rgb(hue, Math.min(0.54, s), Math.min(0.9, val));
 }
 
 export function rgbCss(rgb: [number, number, number], a = 1) {

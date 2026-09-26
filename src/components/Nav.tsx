@@ -20,10 +20,10 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <header data-site-nav className="fixed inset-x-0 top-0 z-50">
       <div
         className={`border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${
-          scrolled ? 'border-gold/20 bg-ink' : 'border-transparent bg-ink/85 backdrop-blur-[10px]'
+          scrolled ? 'border-cyan/20 bg-ink' : 'border-transparent bg-ink/85 backdrop-blur-[10px]'
         }`}
       >
         <nav
@@ -31,7 +31,7 @@ export function Nav() {
           className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 sm:px-8"
         >
           <a href="#top" className="group flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center border border-gold/35 bg-gold/[0.06] font-mono text-[11px] tracking-tight text-gold transition-colors duration-300 group-hover:bg-gold group-hover:text-ink">
+            <span className="grid h-8 w-8 place-items-center border border-cyan/35 bg-cyan/[0.06] font-mono text-[11px] tracking-tight text-cyan transition-colors duration-300 group-hover:bg-cyan group-hover:text-ink">
               LAS
             </span>
             <span className="hidden font-mono text-[11px] uppercase leading-[1.3] tracking-[0.18em] text-paper/55 sm:block">
@@ -50,12 +50,12 @@ export function Nav() {
                     href={link.href}
                     aria-current={isActive ? 'location' : undefined}
                     className={`group relative block px-3 py-2 font-mono text-[12px] uppercase tracking-[0.14em] transition-colors duration-300 ${
-                      isActive ? 'text-gold' : 'text-paper/55 hover:text-paper'
+                      isActive ? 'text-cyan' : 'text-paper/55 hover:text-paper'
                     }`}
                   >
                     {link.label}
                     <span
-                      className={`absolute inset-x-3 bottom-1 h-px origin-left bg-gold transition-transform duration-300 ease-out ${
+                      className={`absolute inset-x-3 bottom-1 h-px origin-left bg-cyan transition-transform duration-300 ease-out ${
                         isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                       }`}
                     />
@@ -75,7 +75,7 @@ export function Nav() {
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
-              className="grid h-10 w-10 place-items-center border border-paper/10 text-paper/80 transition-colors duration-300 hover:border-gold/40 hover:text-gold md:hidden"
+              className="grid h-10 w-10 place-items-center border border-paper/10 text-paper/80 transition-colors duration-300 hover:border-cyan/40 hover:text-cyan md:hidden"
             >
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
@@ -83,7 +83,7 @@ export function Nav() {
         </nav>
         <motion.div
           style={{ scaleX: progress }}
-          className="h-px origin-left bg-gold/80"
+          className="h-px origin-left bg-cyan/80"
         />
       </div>
 
@@ -94,7 +94,7 @@ export function Nav() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-b border-gold/20 bg-ink md:hidden"
+            className="overflow-hidden border-b border-cyan/20 bg-ink md:hidden"
           >
             <ul className="px-5 py-3">
               {navLinks.map((link, i) => (
@@ -110,7 +110,7 @@ export function Nav() {
                     className="flex items-center justify-between border-b border-paper/5 py-3 font-mono text-[13px] uppercase tracking-[0.14em] text-paper/80"
                   >
                     {link.label}
-                    <ArrowUpRight className="h-3.5 w-3.5 text-gold/70" />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-cyan/70" />
                   </a>
                 </motion.li>
               ))}
@@ -118,7 +118,7 @@ export function Nav() {
                 <a
                   href="#newsletter"
                   onClick={() => setOpen(false)}
-                  className="mt-3 flex items-center justify-between py-3 font-heading text-sm text-gold"
+                  className="mt-3 flex items-center justify-between py-3 font-heading text-sm text-cyan"
                 >
                   Join the team
                   <ArrowUpRight className="h-3.5 w-3.5" />

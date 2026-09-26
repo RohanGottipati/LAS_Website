@@ -18,8 +18,8 @@ export function Initiatives() {
             const href = item.code === 'INIT_06' ? '#newsletter' : undefined;
             const Inner = (
               <>
-                <span className="pointer-events-none absolute inset-0 origin-bottom scale-y-0 bg-gold/[0.05] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100" />
-                <span className="pointer-events-none absolute left-0 top-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full" />
+                <span className="pointer-events-none absolute inset-0 origin-bottom scale-y-0 bg-cyan/[0.05] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100" />
+                <span className="pointer-events-none absolute left-0 top-0 h-px w-0 bg-cyan transition-all duration-500 group-hover:w-full" />
 
                 <div className="relative flex items-center justify-between">
                   <span className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-violet">
@@ -35,13 +35,13 @@ export function Initiatives() {
                     {item.tags.map((t) => (
                       <span
                         key={t}
-                        className="border border-violet/25 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-paper/60 transition-colors duration-300 group-hover:border-gold/35 group-hover:text-paper"
+                        className="border border-violet/25 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-paper/60 transition-colors duration-300 group-hover:border-cyan/35 group-hover:text-paper"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
-                  <p className="mt-4 font-mono text-[11px] text-gold/70">{item.metric}</p>
+                  <p className="mt-4 font-mono text-[11px] text-cyan/70">{item.metric}</p>
                 </div>
               </>
             );

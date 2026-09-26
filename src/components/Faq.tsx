@@ -20,7 +20,7 @@ export function Faq() {
               <AccordionItem key={item.q} value={`faq-${i}`} className="border-b border-paper/10">
                 <AccordionTrigger className="py-5 text-left font-heading text-[15px] text-paper hover:no-underline hover:text-paper data-[state=open]:text-paper">
                   <span className="flex items-baseline gap-4">
-                    <span className="font-mono text-[11px] text-gold/70">0{i + 1}</span>
+                    <span className="font-mono text-[11px] text-cyan/70">0{i + 1}</span>
                     {item.q}
                   </span>
                 </AccordionTrigger>

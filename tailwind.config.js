@@ -45,13 +45,13 @@ export default {content: [
         'sidebar-border': 'var(--sidebar-border)',
         'sidebar-ring': 'var(--sidebar-ring)',
         'destructive-foreground': 'var(--destructive-foreground)',
-        ink: '#09080e',
-        panel: '#100f16',
-        lift: '#18171f',
-        paper: '#ece9e2',
-        gold: {
-          DEFAULT: '#c9a227',
-          soft: '#e4c45a'
+        ink: '#070b0d',
+        panel: '#0c1214',
+        lift: '#141c1e',
+        paper: '#e6eef0',
+        cyan: {
+          DEFAULT: '#5EEAD4',
+          soft: '#9AF3E8'
         },
         violet: {
           DEFAULT: '#8b6cc9',

@@ -24,21 +24,21 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
           interactive={false}
         />
       </div>
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,#09080e_0%,rgba(9,8,14,0.88)_55%,rgba(9,8,14,0.62)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,#070b0d_0%,rgba(7,11,13,0.88)_55%,rgba(7,11,13,0.62)_100%)]" />
 
       <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
           <div>
             <Reveal>
-              <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold/80">
+              <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80">
                 <span>05 / Flagship</span>
-                <span className="h-px w-10 bg-gold/40" />
+                <span className="h-px w-10 bg-cyan/40" />
               </div>
             </Reveal>
             <Reveal delay={0.06}>
               <h2 className="mt-5 font-heading text-4xl font-semibold tracking-tight text-paper sm:text-5xl">
                 LaurierDatathon
-                <span className="text-gold">&apos;26</span>
+                <span className="text-cyan">&apos;26</span>
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
@@ -51,10 +51,10 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
             <Reveal delay={0.18}>
               <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 font-mono text-[11.5px] uppercase tracking-[0.16em] text-paper/55">
                 <span className="flex items-center gap-2">
-                  <CalendarDays className="h-3.5 w-3.5 text-gold/80" /> Feb 27 &ndash; Mar 1, 2026
+                  <CalendarDays className="h-3.5 w-3.5 text-cyan/80" /> Feb 27 &ndash; Mar 1, 2026
                 </span>
                 <span className="flex items-center gap-2">
-                  <MapPin className="h-3.5 w-3.5 text-gold/80" /> Lazaridis Hall, Waterloo
+                  <MapPin className="h-3.5 w-3.5 text-cyan/80" /> Lazaridis Hall, Waterloo
                 </span>
               </div>
             </Reveal>
@@ -70,7 +70,7 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
                 {datathonStats.map((s) => (
                   <div key={s.k} className="bg-panel/90 px-5 py-5 backdrop-blur-sm">
                     <dd className="font-heading text-2xl text-paper">{s.v}</dd>
-                    <dt className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-gold/70">{s.k}</dt>
+                    <dt className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/70">{s.k}</dt>
                   </div>
                 ))}
               </dl>
@@ -87,8 +87,8 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
                 transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="group relative overflow-hidden bg-panel/90 p-7 backdrop-blur-sm"
               >
-                <span className="pointer-events-none absolute inset-y-0 left-0 w-0 bg-gold/[0.06] transition-all duration-500 ease-out group-hover:w-full" />
-                <span className="pointer-events-none absolute inset-y-0 left-0 w-px origin-top scale-y-0 bg-gold transition-transform duration-500 group-hover:scale-y-100" />
+                <span className="pointer-events-none absolute inset-y-0 left-0 w-0 bg-cyan/[0.06] transition-all duration-500 ease-out group-hover:w-full" />
+                <span className="pointer-events-none absolute inset-y-0 left-0 w-px origin-top scale-y-0 bg-cyan transition-transform duration-500 group-hover:scale-y-100" />
                 <div className="relative flex items-start justify-between gap-6">
                   <div>
                     <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-violet">

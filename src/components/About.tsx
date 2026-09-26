@@ -30,7 +30,7 @@ function tokenize(line: string) {
   while ((m = re.exec(line))) {
     const [tok, str, kw, num, ident, punct] = m;
     let cls = 'text-paper/85';
-    if (str) cls = 'text-gold';
+    if (str) cls = 'text-cyan';
     else if (kw) cls = 'text-violet';
     else if (num) cls = 'text-heat';
     else if (ident) {
@@ -123,7 +123,7 @@ export function About() {
                 ['Campus', 'Waterloo']
               ].map(([k, v]) => (
                 <div key={k} className="group bg-panel px-5 py-5 transition-colors duration-500 hover:bg-lift">
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.24em] text-gold/70">{k}</dt>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyan/70">{k}</dt>
                   <dd className="mt-2 font-heading text-xl text-paper">{v}</dd>
                 </div>
               ))}
@@ -134,16 +134,16 @@ export function About() {
         <Reveal delay={0.12}>
           <div
             ref={ref}
-            className="relative overflow-hidden border border-paper/10 bg-panel shadow-[0_40px_120px_-60px_rgba(201,162,39,0.22)]"
+            className="relative overflow-hidden border border-paper/10 bg-panel shadow-[0_40px_120px_-60px_rgba(94,234,212,0.22)]"
           >
-            <div className="flex items-center gap-2 border-b border-paper/10 bg-gold/[0.03] px-4 py-3">
+            <div className="flex items-center gap-2 border-b border-paper/10 bg-cyan/[0.03] px-4 py-3">
               <span className="h-2.5 w-2.5 rounded-full bg-heat/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-gold/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-cyan/80" />
               <span className="h-2.5 w-2.5 rounded-full bg-trace/80" />
               <span className="ml-2 font-mono text-[11px] text-paper/45">las_society.py</span>
               <span
                 className={`ml-auto font-mono text-[10px] uppercase tracking-[0.2em] ${
-                  done ? 'text-trace' : 'text-gold'
+                  done ? 'text-trace' : 'text-cyan'
                 }`}
               >
                 {done ? 'exit 0' : 'running'}

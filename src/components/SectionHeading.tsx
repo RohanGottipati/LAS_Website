@@ -13,12 +13,12 @@ export function SectionHeading({ index, title, description, align = 'left' }: Se
     <div className={align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}>
       <Reveal>
         <div
-          className={`flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-gold/80 ${
+          className={`flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80 ${
             align === 'center' ? 'justify-center' : ''
           }`}
         >
           <span>{index}</span>
-          <span className="h-px w-10 bg-gold/40" />
+          <span className="h-px w-10 bg-cyan/40" />
         </div>
       </Reveal>
       <Reveal delay={0.06}>

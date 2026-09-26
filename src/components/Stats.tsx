@@ -26,19 +26,19 @@ function StatCard({
       transition={{ duration: 0.7, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
       className="group relative overflow-hidden bg-panel px-6 py-9 sm:px-8"
     >
-      <span className="pointer-events-none absolute inset-0 -translate-y-full bg-gold/[0.05] transition-transform duration-500 ease-out group-hover:translate-y-0" />
+      <span className="pointer-events-none absolute inset-0 -translate-y-full bg-cyan/[0.05] transition-transform duration-500 ease-out group-hover:translate-y-0" />
       <div className="relative">
         <div className="flex items-baseline font-heading text-4xl font-semibold tracking-tight text-paper sm:text-5xl">
           <span ref={ref} className="tabular-nums">
             {current.toLocaleString()}
           </span>
-          <span className="text-gold">{suffix}</span>
+          <span className="text-cyan">{suffix}</span>
         </div>
         <p className="mt-3 font-heading text-sm text-paper/80">{label}</p>
         <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-paper/40">{detail}</p>
         <div className="mt-5 h-px w-full bg-paper/10">
           <motion.div
-            className="h-px bg-gold"
+            className="h-px bg-cyan"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}

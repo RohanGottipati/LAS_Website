@@ -13,7 +13,7 @@ function Row({ items, reverse = false }: { items: string[]; reverse?: boolean })
         {doubled.map((name, i) => (
           <span
             key={`${name}-${i}`}
-            className="font-heading text-lg font-medium tracking-[0.12em] text-paper/35 transition-colors duration-300 hover:text-gold sm:text-xl"
+            className="font-heading text-lg font-medium tracking-[0.12em] text-paper/35 transition-colors duration-300 hover:text-cyan sm:text-xl"
           >
             {name}
           </span>
@@ -28,7 +28,7 @@ export function Sponsors() {
     <section aria-label="Partners and sponsors" className="border-b border-paper/10 py-16 sm:py-20">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal>
-          <p className="text-center font-mono text-[10.5px] uppercase tracking-[0.3em] text-gold/80">
+          <p className="text-center font-mono text-[10.5px] uppercase tracking-[0.3em] text-cyan/80">
             Partners who hire, judge and sponsor
           </p>
         </Reveal>

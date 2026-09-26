@@ -15,6 +15,10 @@ interface AsciiFieldProps {
   interactive?: boolean;
   /** Full chroma heatmap vs a quieter wash for background sections. */
   chroma?: number;
+  /** Vertical placement of the mask, 0 = top, 1 = bottom. */
+  maskY?: number;
+  /** Mask glyph height as a fraction of the field. */
+  maskScale?: number;
 }
 
 function noise(x: number, y: number, t: number) {
@@ -32,7 +36,9 @@ export function AsciiField({
   speed = 1,
   intensity = 0.9,
   interactive = true,
-  chroma = 1
+  chroma = 1,
+  maskY = 0.5,
+  maskScale = 0.62
 }: AsciiFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const pointer = useRef({ x: -999, y: -999, active: false });
@@ -62,7 +68,7 @@ export function AsciiField({
       octx.save();
       octx.scale(1, cellWidth / cellHeight);
       const virtualH = rows * (cellHeight / cellWidth);
-      let size = Math.floor(virtualH * 0.62);
+      let size = Math.floor(virtualH * maskScale);
       octx.textAlign = 'center';
       octx.textBaseline = 'middle';
       octx.fillStyle = '#fff';
@@ -71,7 +77,7 @@ export function AsciiField({
         return octx.measureText(maskText).width;
       };
       while (fit() > cols * 0.88 && size > 6) size -= 1;
-      octx.fillText(maskText, cols / 2, virtualH / 2);
+      octx.fillText(maskText, cols / 2, virtualH * maskY);
       octx.restore();
       const data = octx.getImageData(0, 0, cols, rows).data;
       for (let i = 0; i < cols * rows; i++) mask[i] = data[i * 4 + 3] / 255;
@@ -192,7 +198,7 @@ export function AsciiField({
       window.removeEventListener('pointerleave', onLeave);
       document.removeEventListener('visibilitychange', onVis);
     };
-  }, [maskText, cellWidth, cellHeight, speed, intensity, interactive, chroma]);
+  }, [maskText, cellWidth, cellHeight, speed, intensity, interactive, chroma, maskY, maskScale]);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={className} />;
 }

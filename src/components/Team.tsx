@@ -91,12 +91,12 @@ export function Team() {
               onMouseLeave={() => setActive(null)}
               className="group relative overflow-hidden bg-panel p-6"
             >
-              <span className="pointer-events-none absolute inset-0 bg-gold/[0.04] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <span className="pointer-events-none absolute inset-0 bg-cyan/[0.04] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative overflow-hidden border border-paper/10 bg-ink/60 p-4">
                 <AsciiPortrait seed={member.name} hovered={active === member.name} />
               </div>
               <h3 className="relative mt-5 font-heading text-base text-paper">{member.name}</h3>
-              <p className="relative mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-gold/80">
+              <p className="relative mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan/80">
                 {member.role}
               </p>
               <p className="relative mt-2 text-[13px] text-paper/45">{member.focus}</p>
