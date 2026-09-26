@@ -11,9 +11,12 @@ if (!url || !publishableKey) {
   );
 }
 
-export const supabase = createClient(url ?? '', publishableKey ?? '', {
-  auth: { persistSession: false },
-});
+// Only construct a client when both values exist. An empty URL throws inside
+// supabase-js and would take down the whole page on a build without env vars.
+export const supabase =
+  url && publishableKey
+    ? createClient(url, publishableKey, { auth: { persistSession: false } })
+    : null;
 
 export type SignupType = 'newsletter' | 'event';
 
@@ -36,6 +39,13 @@ export async function subscribe(params: {
   eventKey?: string;
   source?: string;
 }): Promise<SubscribeResult> {
+  if (!supabase) {
+    return {
+      ok: false,
+      error: 'Signups are not available right now. Please try again later.',
+    };
+  }
+
   const { data, error } = await supabase.functions.invoke<SubscribeResult>('subscribe', {
     body: {
       email: params.email,
