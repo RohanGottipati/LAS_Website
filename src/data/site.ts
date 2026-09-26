@@ -25,11 +25,49 @@ export const team = [
 { name: 'Liam Brooks', role: 'Director, Education', focus: 'Statistics' }];
 
 
-export const datathonStats = [
-{ k: 'Participants', v: '350' },
-{ k: 'Hours', v: '36' },
-{ k: 'Prize pool', v: '$15K' },
-{ k: 'Partners', v: '12' }];
+export const datathonYears = [
+{
+  id: '2026',
+  label: "'26",
+  title: 'LAS Datathon @ Sun Life',
+  summary:
+    'Last year, our flagship brought a hundred students together for six days of building in teams. They took on a real problem with their group, then presented it at the Sun Life office in Waterloo.',
+  images: [
+    {
+      src: '/data-minds-challenge.jpg',
+      alt: 'Laurier Analytics Society members at The Data Minds Challenge'
+    },
+    {
+      src: '/datathon-2026-stage.jpg',
+      alt: 'The Data Minds Challenge stage, with Laurier Analytics Society and Sun Life'
+    },
+    {
+      src: '/datathon-2026-trophies.jpg',
+      alt: 'Trophies and medals from The Data Minds Challenge, including a Sun Life runner-up'
+    }
+  ]
+},
+{
+  id: '2025',
+  label: "'25",
+  title: 'LAS Datathon @ Google',
+  summary:
+    'The year before that, we brought a hundred students into Google\'s Waterloo office to build in teams and demo what they made. They got the working sessions, a chance to present live, and a real feel for what this kind of project is like.',
+  images: [
+    {
+      src: '/datathon-2025-stage.jpg',
+      alt: 'A live demo at The Data Minds Challenge, hosted at Google\'s Waterloo office'
+    },
+    {
+      src: '/datathon-2025-room.jpg',
+      alt: 'Teams building at the LAS Datathon in Google\'s Waterloo office'
+    },
+    {
+      src: '/datathon-2025-awards.jpg',
+      alt: 'Winner and runner-up awards from the LAS Datathon at Google'
+    }
+  ]
+}];
 
 
 export const datathonTracks = [

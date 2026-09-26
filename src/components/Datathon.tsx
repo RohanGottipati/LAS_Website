@@ -1,16 +1,28 @@
-import React from 'react';
-import { ArrowUpRight, CalendarDays, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { AsciiField } from './AsciiField';
-import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
-import { datathonStats } from '../data/site';
+import { datathonYears } from '../data/site';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 interface DatathonProps {
   cellWidth?: number;
   cellHeight?: number;
 }
 
+interface YearPhoto {
+  src: string;
+  alt: string;
+}
+
 export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
+  const reduced = usePrefersReducedMotion();
+  const [yearId, setYearId] = useState(datathonYears[0].id);
+  const year = datathonYears.find((item) => item.id === yearId) ?? datathonYears[0];
+
   return (
     <section id="datathon" className="relative isolate overflow-hidden border-b border-paper/10">
       <div className="absolute inset-0 -z-10 opacity-[0.55]">
@@ -22,60 +34,161 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
           intensity={0}
           chroma={0.7}
           interactive={false} />
-        
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(90deg,#070b0d_0%,rgba(7,11,13,0.88)_55%,rgba(7,11,13,0.62)_100%)]" />
 
       <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
-        <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-center lg:gap-20">
           <div className="text-center">
-            <SectionHeading align="center" index="02 / Flagship" title="LAS Datathon *'26*" />
-            <Reveal delay={0.12}>
-              <p className="mx-auto mt-8 max-w-2xl text-[15px] leading-relaxed text-paper/60">
-                In February 2026, 350 students spent 36 hours on twelve partner datasets that had never been opened
-                outside the organization. Teams pitched to a panel of analysts, quants and product leads on Sunday
-                afternoon.
-              </p>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <div className="mt-7 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 font-mono text-[11.5px] uppercase tracking-[0.16em] text-paper/55">
-                <span className="flex items-center gap-2">
-                  <CalendarDays className="h-3.5 w-3.5 text-cyan/80" /> Feb 26 &ndash; 28, 2026
-                </span>
-                <span className="flex items-center gap-2">
-                  <MapPin className="h-3.5 w-3.5 text-cyan/80" /> Lazaridis Hall, Waterloo
-                </span>
-              </div>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <a href="#newsletter" className="btn-signal mt-9" data-cursor="notify">
-                Get notified when '27 applications drop
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </Reveal>
+            <SectionHeading align="center" index="02 / Flagship" title="LAS Datathon" />
 
-            <Reveal delay={0.3}>
-              <dl className="mt-12 grid grid-cols-2 gap-px border border-paper/10 bg-paper/10 sm:grid-cols-4">
-                {datathonStats.map((s) =>
-                <div key={s.k} className="flex flex-col-reverse bg-panel/90 px-5 py-5 backdrop-blur-sm">
-                    <dt className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan/70">{s.k}</dt>
-                    <dd className="font-display text-4xl leading-none text-paper">{s.v}</dd>
+            <div
+              role="tablist"
+              aria-label="Datathon year"
+              className="mt-8 inline-flex border border-paper/15">
+              {datathonYears.map((item) => {
+                const selected = item.id === year.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={selected}
+                    onClick={() => setYearId(item.id)}
+                    className={`px-5 py-2 font-mono text-[12px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+                      selected ? 'bg-cyan text-ink' : 'text-paper/55 hover:text-paper'
+                    }`}>
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 grid">
+              {datathonYears.map((item) => {
+                const active = item.id === year.id;
+                return (
+                  <div
+                    key={item.id}
+                    className={`col-start-1 row-start-1 ${reduced ? '' : 'transition-opacity duration-200 ease-out'}`}
+                    style={{ opacity: active ? 1 : 0, pointerEvents: active ? 'auto' : 'none' }}
+                    aria-hidden={!active}
+                    inert={!active}>
+                    <p className="font-display text-2xl tracking-[-0.01em] text-paper sm:text-[1.75rem]">{item.title}</p>
+                    <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-paper/60">{item.summary}</p>
                   </div>
-                )}
-              </dl>
-            </Reveal>
+                );
+              })}
+            </div>
           </div>
 
-          <Reveal delay={0.16} className="self-center">
-            <figure className="overflow-hidden border border-paper/10 bg-panel shadow-[0_40px_120px_-60px_rgba(94,234,212,0.22)]">
-              <img
-                src="/data-minds-challenge.jpg"
-                alt="Laurier Analytics Society members at The Data Minds Challenge"
-                className="h-auto w-full object-cover" />
-            </figure>
-          </Reveal>
+          <div className="grid self-center">
+            {datathonYears.map((item) => {
+              const active = item.id === year.id;
+              return (
+                <div
+                  key={item.id}
+                  className={`col-start-1 row-start-1 h-full ${reduced ? '' : 'transition-opacity duration-200 ease-out'}`}
+                  style={{ opacity: active ? 1 : 0, pointerEvents: active ? 'auto' : 'none' }}
+                  aria-hidden={!active}
+                  inert={!active}>
+                  {item.images.length > 0 ?
+                    <PhotoReel images={item.images} /> :
+                    <div className="h-full border border-paper/10 bg-panel" />
+                  }
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
+}
 
+function PhotoReel({ images }: { images: YearPhoto[] }) {
+  const reduced = usePrefersReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState(1);
+  const count = images.length;
+  const photo = images[index];
+
+  const step = (direction: 1 | -1) => {
+    setDir(direction);
+    setIndex((current) => (current + direction + count) % count);
+  };
+
+  return (
+    <figure className="border border-paper/10 bg-panel shadow-[0_40px_120px_-60px_rgba(94,234,212,0.22)]">
+      <div className="group relative aspect-[4/3] overflow-hidden bg-ink">
+        <AnimatePresence initial={false} custom={dir}>
+          <motion.img
+            key={photo.src}
+            src={photo.src}
+            alt={photo.alt}
+            custom={dir}
+            variants={{
+              enter: (direction: number) => ({ opacity: 0, x: reduced ? 0 : direction * 40 }),
+              center: { opacity: 1, x: 0 },
+              exit: (direction: number) => ({ opacity: 0, x: reduced ? 0 : direction * -40 })
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: reduced ? 0 : 0.55, ease: EASE }}
+            className="absolute inset-0 h-full w-full object-cover" />
+        </AnimatePresence>
+
+        <button
+          type="button"
+          tabIndex={-1}
+          aria-hidden="true"
+          onClick={() => step(1)}
+          className="absolute inset-0 cursor-pointer" />
+
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            step(-1);
+          }}
+          aria-label="Previous photo"
+          className="absolute left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center border border-paper/15 bg-ink/70 text-paper/80 backdrop-blur-sm transition-colors duration-300 hover:border-cyan/40 hover:text-cyan">
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            step(1);
+          }}
+          aria-label="Next photo"
+          className="absolute right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center border border-paper/15 bg-ink/70 text-paper/80 backdrop-blur-sm transition-colors duration-300 hover:border-cyan/40 hover:text-cyan">
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      </div>
+
+      <figcaption className="flex items-center justify-between px-4 py-3">
+        <div className="flex items-center gap-2">
+          {images.map((image, dot) =>
+            <button
+              key={image.src}
+              type="button"
+              aria-label={`Photo ${dot + 1} of ${count}`}
+              aria-current={dot === index ? 'true' : undefined}
+              onClick={() => {
+                setDir(dot > index ? 1 : -1);
+                setIndex(dot);
+              }}
+              className={`h-1.5 transition-all duration-500 ease-out ${
+                dot === index ? 'w-6 bg-cyan' : 'w-1.5 bg-paper/25 hover:bg-paper/50'
+              }`} />
+          )}
+        </div>
+        <p className="font-mono text-[11px] tracking-[0.18em] text-paper/45">
+          {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
+        </p>
+      </figcaption>
+    </figure>
+  );
 }
