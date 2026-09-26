@@ -49,7 +49,7 @@ variables in `.env` must be set for signups to work locally. See
 │   ├── index.css           # Global styles
 │   ├── data/site.ts        # All copy, stats, team, FAQs, etc.
 │   ├── hooks/              # Shared hooks (e.g. count-up)
-│   ├── lib/supabase.ts     # Supabase client + subscribe() helper
+│   ├── utils/supabase.ts   # Supabase client + subscribe() helper
 │   └── components/         # Page sections + UI primitives
 ├── supabase/
 │   └── functions/
@@ -68,7 +68,7 @@ The newsletter form and the "get notified" flows are backed by Supabase.
 **How a signup works**
 
 ```
-Newsletter form → subscribe() (src/lib/supabase.ts)
+Newsletter form → subscribe() (src/utils/supabase.ts)
                 → Edge Function `subscribe`
                 → insert into Postgres (service role, bypasses RLS)
                 → Resend welcome email (only on a new signup)

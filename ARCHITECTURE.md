@@ -12,7 +12,7 @@ Browser → index.html → src/index.tsx → App → section components
                               ↑
                      src/data/site.ts (content)
 
-Signup forms → src/lib/supabase.ts → Supabase Edge Function `subscribe`
+Signup forms → src/utils/supabase.ts → Supabase Edge Function `subscribe`
                                     → Postgres + Resend email
 ```
 
@@ -35,7 +35,7 @@ Signup forms → src/lib/supabase.ts → Supabase Edge Function `subscribe`
 | `src/hooks/useCountUp.ts` | Animated number counters for stats |
 | `src/components/ui/Accordion.tsx` | FAQ accordion primitive |
 | `src/components/Newsletter.tsx` | Newsletter section; submits via `subscribe()` |
-| `src/lib/supabase.ts` | Supabase client + `subscribe()` helper (calls the Edge Function) |
+| `src/utils/supabase.ts` | Supabase client + `subscribe()` helper (calls the Edge Function) |
 | `supabase/functions/subscribe/index.ts` | Edge Function: validates, stores signup, sends Resend email |
 | `src/_designSystem/` | Bundled design-system assets from the template (styles / library) |
 
@@ -47,7 +47,7 @@ keeps the service-role key and the Resend key server-side.
 
 **Flow**
 
-1. `subscribe()` in `src/lib/supabase.ts` calls the `subscribe` Edge Function
+1. `subscribe()` in `src/utils/supabase.ts` calls the `subscribe` Edge Function
    with `{ email, type, event_key?, source? }`.
 2. The function validates the email, then inserts into `newsletter_subscribers`
    (type `newsletter`) or `event_notifications` (type `event`) using the

@@ -35,7 +35,13 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       smoothWheel: true
     });
     lenisRef.current = lenis;
-    if (document.body.style.overflow === 'hidden') lenis.stop();
+    const syncLock = () => {
+      if (document.body.style.overflow === 'hidden') lenis.stop();
+      else lenis.start();
+    };
+    syncLock();
+    const lockObserver = new MutationObserver(syncLock);
+    lockObserver.observe(document.body, { attributes: true, attributeFilter: ['style'] });
     lenis.on('scroll', () => scrollSubscribers.forEach((callback) => callback()));
 
     let raf = 0;
@@ -71,6 +77,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     document.addEventListener('click', onAnchorClick);
     return () => {
+      lockObserver.disconnect();
       document.removeEventListener('click', onAnchorClick);
       cancelAnimationFrame(raf);
       lenis.destroy();

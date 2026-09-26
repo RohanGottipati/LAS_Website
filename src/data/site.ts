@@ -1,140 +1,17 @@
+export const brand = {
+  name: 'Laurier Analytics Society',
+  short: 'LAS'
+};
+
 export const navLinks = [
 { label: 'About', href: '#about' },
-{ label: 'Impact', href: '#impact' },
-{ label: 'Initiatives', href: '#initiatives' },
-{ label: 'Team', href: '#team' },
 { label: 'Datathon', href: '#datathon' },
+{ label: 'Team', href: '#team' },
 { label: 'FAQ', href: '#faq' }];
 
 
 export const aboutParagraphs = [
-'The Laurier Analytics Society (LAS) is Wilfrid Laurier University\u2019s student-run data community \u2014 the home for anyone who works with numbers, models, dashboards and messy spreadsheets.',
-'We turn coursework into career capital: hands-on workshops, case competitions, industry mentorship and a datathon that ships real analysis for real partners.'];
-
-
-export const stats = [
-{ value: 24, suffix: '+', label: 'Events per year', detail: 'workshops / socials / panels' },
-{ value: 38, suffix: '', label: 'Executive members', detail: 'across 6 portfolios' },
-{ value: 2400, suffix: '+', label: 'Students reached', detail: 'BBA, Fin Math, DS, Econ' },
-{ value: 96, suffix: '%', label: 'Would return', detail: 'post-event survey, 2025' }];
-
-
-export const impactEvents = [
-{
-  label: 'Analytics Bootcamp',
-  meta: '1,840 seats · 92% attendance',
-  images: [
-  '/events/bootcamp-1.svg',
-  '/events/bootcamp-2.svg',
-  '/events/bootcamp-3.svg',
-  '/events/bootcamp-4.svg',
-  '/events/bootcamp-5.svg']
-
-},
-{
-  label: 'Case Competition Circuit',
-  meta: '312 competitors · 74% participation',
-  images: [
-  '/events/cases-1.svg',
-  '/events/cases-2.svg',
-  '/events/cases-3.svg',
-  '/events/cases-4.svg',
-  '/events/cases-5.svg']
-
-},
-{
-  label: 'Speaker Series',
-  meta: '18 partner companies · 9 sessions',
-  images: [
-  '/events/speakers-1.svg',
-  '/events/speakers-2.svg',
-  '/events/speakers-3.svg',
-  '/events/speakers-4.svg',
-  '/events/speakers-5.svg']
-
-},
-{
-  label: 'Mentorship Program',
-  meta: '146 pairs · 83% match rate',
-  images: [
-  '/events/mentorship-1.svg',
-  '/events/mentorship-2.svg',
-  '/events/mentorship-3.svg',
-  '/events/mentorship-4.svg',
-  '/events/mentorship-5.svg']
-
-},
-{
-  label: 'LAS Datathon',
-  meta: '350 participants · 71 reported offers',
-  images: [
-  '/events/datathon-1.svg',
-  '/events/datathon-2.svg',
-  '/events/datathon-3.svg',
-  '/events/datathon-4.svg',
-  '/events/datathon-5.svg']
-
-}];
-
-
-export const impactSeries = [
-{ year: '2021', value: 180 },
-{ year: '2022', value: 410 },
-{ year: '2023', value: 760 },
-{ year: '2024', value: 1290 },
-{ year: '2025', value: 1880 },
-{ year: '2026', value: 2400 }];
-
-
-export const initiatives = [
-{
-  code: 'INIT_01',
-  title: 'Analytics Bootcamp',
-  blurb:
-  'A six-week track through SQL, Python and dashboarding. Students leave with a portfolio project and a reviewed resume.',
-  tags: ['SQL', 'Python', 'Power BI'],
-  metric: '6 weeks / 120 seats'
-},
-{
-  code: 'INIT_02',
-  title: 'Case Competition Circuit',
-  blurb:
-  'Monthly analytics cases with real partner datasets, judged by alumni working in consulting, banking and product.',
-  tags: ['Cases', 'Judging', 'Prizes'],
-  metric: '8 cases / $6K awarded'
-},
-{
-  code: 'INIT_03',
-  title: 'Mentorship Program',
-  blurb:
-  'First and second years get paired with upper-year students and alumni for structured monthly check-ins.',
-  tags: ['1:1', 'Alumni', 'Career'],
-  metric: '146 matches'
-},
-{
-  code: 'INIT_04',
-  title: 'Speaker Series',
-  blurb:
-  'Practitioners from Shopify, RBC, Deloitte and Wealthsimple break down how decisions actually get made with data.',
-  tags: ['Panels', 'Networking'],
-  metric: '9 sessions / yr'
-},
-{
-  code: 'INIT_05',
-  title: 'Research Lab',
-  blurb:
-  'Small teams publish open analyses on campus life, markets and sports \u2014 with code reviewed by faculty advisors.',
-  tags: ['Open data', 'Notebooks'],
-  metric: '11 papers shipped'
-},
-{
-  code: 'INIT_06',
-  title: 'LAS Newsletter',
-  blurb:
-  'A biweekly signal-over-noise digest: events, deadlines, internships and one chart worth your attention.',
-  tags: ['Biweekly', 'Free'],
-  metric: '2,400 subscribers'
-}];
+'The Laurier Analytics Society (LAS) is Wilfrid Laurier University\'s official analytics club, the Laurier data club for WLU students. We support students through workshops, industry mentorship, a datathon, and a strong analytics-focused community.'];
 
 
 export const team = [
@@ -156,31 +33,9 @@ export const datathonStats = [
 
 
 export const datathonTracks = [
-{
-  title: 'Campus Ops',
-  blurb: 'Optimize scheduling, transit and space usage with live Laurier operational data.'
-},
-{
-  title: 'Markets',
-  blurb: 'Build a signal, backtest it honestly, and defend it to a room of quants.'
-},
-{
-  title: 'Social Good',
-  blurb: 'Partner with Waterloo Region nonprofits to turn their raw records into decisions.'
-}];
-
-
-export const sponsors = [
-'SHOPIFY',
-'RBC',
-'DELOITTE',
-'WEALTHSIMPLE',
-'MANULIFE',
-'SUN LIFE',
-'OPENTEXT',
-'TD',
-'KPMG',
-'DATABRICKS'];
+{ title: 'Campus Ops', blurb: 'Optimize scheduling, transit and space usage with live Laurier operational data.' },
+{ title: 'Markets', blurb: 'Build a signal, backtest it honestly, and defend it to a room of quants.' },
+{ title: 'Social Good', blurb: 'Partner with Waterloo Region nonprofits to turn their raw records into decisions.' }];
 
 
 export const faqs = [
@@ -209,5 +64,4 @@ export const faqs = [
 export const socials = [
 { label: 'Instagram', handle: '@laurier_analytics', url: 'https://www.instagram.com/laurier_analytics' },
 { label: 'LinkedIn', handle: '/company/laurier-analytics-society-las', url: 'https://www.linkedin.com/company/laurier-analytics-society-las' },
-{ label: 'Discord', handle: 'discord.gg/las' },
-{ label: 'GitHub', handle: '/laurier-analytics' }];
+{ label: 'Newsletter', handle: 'Biweekly digest', url: '#newsletter' }];
