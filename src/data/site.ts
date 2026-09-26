@@ -21,53 +21,58 @@ export const stats = [
 
 export const impactEvents = [
 {
-  label: 'Event 1',
+  label: 'Analytics Bootcamp',
+  meta: '1,840 seats · 92% attendance',
   images: [
-  'https://picsum.photos/seed/las-1-1/600/400',
-  'https://picsum.photos/seed/las-1-2/600/400',
-  'https://picsum.photos/seed/las-1-3/600/400',
-  'https://picsum.photos/seed/las-1-4/600/400',
-  'https://picsum.photos/seed/las-1-5/600/400']
+  '/events/bootcamp-1.svg',
+  '/events/bootcamp-2.svg',
+  '/events/bootcamp-3.svg',
+  '/events/bootcamp-4.svg',
+  '/events/bootcamp-5.svg']
 
 },
 {
-  label: 'Event 2',
+  label: 'Case Competition Circuit',
+  meta: '312 competitors · 74% participation',
   images: [
-  'https://picsum.photos/seed/las-2-1/600/400',
-  'https://picsum.photos/seed/las-2-2/600/400',
-  'https://picsum.photos/seed/las-2-3/600/400',
-  'https://picsum.photos/seed/las-2-4/600/400',
-  'https://picsum.photos/seed/las-2-5/600/400']
+  '/events/cases-1.svg',
+  '/events/cases-2.svg',
+  '/events/cases-3.svg',
+  '/events/cases-4.svg',
+  '/events/cases-5.svg']
 
 },
 {
-  label: 'Event 3',
+  label: 'Speaker Series',
+  meta: '18 partner companies · 9 sessions',
   images: [
-  'https://picsum.photos/seed/las-3-1/600/400',
-  'https://picsum.photos/seed/las-3-2/600/400',
-  'https://picsum.photos/seed/las-3-3/600/400',
-  'https://picsum.photos/seed/las-3-4/600/400',
-  'https://picsum.photos/seed/las-3-5/600/400']
+  '/events/speakers-1.svg',
+  '/events/speakers-2.svg',
+  '/events/speakers-3.svg',
+  '/events/speakers-4.svg',
+  '/events/speakers-5.svg']
 
 },
 {
-  label: 'Event 4',
+  label: 'Mentorship Program',
+  meta: '146 pairs · 83% match rate',
   images: [
-  'https://picsum.photos/seed/las-4-1/600/400',
-  'https://picsum.photos/seed/las-4-2/600/400',
-  'https://picsum.photos/seed/las-4-3/600/400',
-  'https://picsum.photos/seed/las-4-4/600/400',
-  'https://picsum.photos/seed/las-4-5/600/400']
+  '/events/mentorship-1.svg',
+  '/events/mentorship-2.svg',
+  '/events/mentorship-3.svg',
+  '/events/mentorship-4.svg',
+  '/events/mentorship-5.svg']
 
 },
 {
-  label: 'Event 5',
+  label: 'LAS Datathon',
+  meta: '350 participants · 71 reported offers',
   images: [
-  'https://picsum.photos/seed/las-5-1/600/400',
-  'https://picsum.photos/seed/las-5-2/600/400',
-  'https://picsum.photos/seed/las-5-3/600/400',
-  'https://picsum.photos/seed/las-5-4/600/400',
-  'https://picsum.photos/seed/las-5-5/600/400']
+  '/events/datathon-1.svg',
+  '/events/datathon-2.svg',
+  '/events/datathon-3.svg',
+  '/events/datathon-4.svg',
+  '/events/datathon-5.svg']
 
 }];
 
