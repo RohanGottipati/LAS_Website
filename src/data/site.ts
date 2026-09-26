@@ -19,12 +19,62 @@ export const stats = [
 { value: 96, suffix: '%', label: 'Would return', detail: 'post-event survey, 2025' }];
 
 
-export const impactBars = [
-{ label: 'Workshop attendance', value: 92, meta: '1,840 seats filled' },
-{ label: 'Case comp participation', value: 74, meta: '312 competitors' },
-{ label: 'Industry partners', value: 61, meta: '18 companies' },
-{ label: 'Mentorship matches', value: 83, meta: '146 pairs' },
-{ label: 'Job / co-op placements', value: 47, meta: '71 reported offers' }];
+export const impactEvents = [
+{
+  label: 'Analytics Bootcamp',
+  meta: '1,840 seats · 92% attendance',
+  images: [
+  '/events/bootcamp-1.svg',
+  '/events/bootcamp-2.svg',
+  '/events/bootcamp-3.svg',
+  '/events/bootcamp-4.svg',
+  '/events/bootcamp-5.svg']
+
+},
+{
+  label: 'Case Competition Circuit',
+  meta: '312 competitors · 74% participation',
+  images: [
+  '/events/cases-1.svg',
+  '/events/cases-2.svg',
+  '/events/cases-3.svg',
+  '/events/cases-4.svg',
+  '/events/cases-5.svg']
+
+},
+{
+  label: 'Speaker Series',
+  meta: '18 partner companies · 9 sessions',
+  images: [
+  '/events/speakers-1.svg',
+  '/events/speakers-2.svg',
+  '/events/speakers-3.svg',
+  '/events/speakers-4.svg',
+  '/events/speakers-5.svg']
+
+},
+{
+  label: 'Mentorship Program',
+  meta: '146 pairs · 83% match rate',
+  images: [
+  '/events/mentorship-1.svg',
+  '/events/mentorship-2.svg',
+  '/events/mentorship-3.svg',
+  '/events/mentorship-4.svg',
+  '/events/mentorship-5.svg']
+
+},
+{
+  label: 'LAS Datathon',
+  meta: '350 participants · 71 reported offers',
+  images: [
+  '/events/datathon-1.svg',
+  '/events/datathon-2.svg',
+  '/events/datathon-3.svg',
+  '/events/datathon-4.svg',
+  '/events/datathon-5.svg']
+
+}];
 
 
 export const impactSeries = [

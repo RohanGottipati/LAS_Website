@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="LAS Datathon Closing recap">
+  <rect width="600" height="400" fill="#101014"/>
+  <rect x="22" y="22" width="556" height="356" fill="none" stroke="#71717a" stroke-width="1"/>
+  <path d="M22 270 H578" stroke="#71717a" stroke-opacity="0.45"/>
+  <path d="M22 190 H578" stroke="#71717a" stroke-opacity="0.25"/>
+  <circle cx="400" cy="230" r="70" fill="none" stroke="#f4f4f5" stroke-opacity="0.18"/>
+  <text x="44" y="64" fill="#f4f4f5" fill-opacity="0.55" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="4">LAS / FLAGSHIP</text>
+  <text x="44" y="168" fill="#f4f4f5" font-family="Georgia, 'Times New Roman', serif" font-size="36">LAS Datathon</text>
+  <text x="44" y="208" fill="#f4f4f5" fill-opacity="0.62" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="2">05  CLOSING RECAP</text>
+  <text x="44" y="348" fill="#f4f4f5" fill-opacity="0.35" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="3">PLACEHOLDER  ·  SWAP FOR REAL PHOTO</text>
+</svg>

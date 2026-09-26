@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="Speaker Series Team breakout">
+  <rect width="600" height="400" fill="#121318"/>
+  <rect x="22" y="22" width="556" height="356" fill="none" stroke="#3f4654" stroke-width="1"/>
+  <path d="M22 194 H578" stroke="#3f4654" stroke-opacity="0.45"/>
+  <path d="M22 184 H578" stroke="#3f4654" stroke-opacity="0.25"/>
+  <circle cx="260" cy="230" r="58" fill="none" stroke="#c4c4cc" stroke-opacity="0.18"/>
+  <text x="44" y="64" fill="#c4c4cc" fill-opacity="0.55" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="4">LAS / INDUSTRY</text>
+  <text x="44" y="168" fill="#c4c4cc" font-family="Georgia, 'Times New Roman', serif" font-size="36">Speaker Series</text>
+  <text x="44" y="208" fill="#c4c4cc" fill-opacity="0.62" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="2">03  TEAM BREAKOUT</text>
+  <text x="44" y="348" fill="#c4c4cc" fill-opacity="0.35" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="3">PLACEHOLDER  ·  SWAP FOR REAL PHOTO</text>
+</svg>
