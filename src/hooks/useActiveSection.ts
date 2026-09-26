@@ -4,9 +4,9 @@ export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState('');
 
   useEffect(() => {
-    const els = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
+    const els = ids.
+    map((id) => document.getElementById(id)).
+    filter((el): el is HTMLElement => Boolean(el));
     if (!els.length) return;
 
     const ratios = new Map<string, number>();
@@ -17,12 +17,12 @@ export function useActiveSection(ids: string[]) {
         }
         let best = '';
         let bestRatio = 0;
-        for (const [id, ratio] of ratios) {
+        ratios.forEach((ratio, id) => {
           if (ratio > bestRatio) {
             best = id;
             bestRatio = ratio;
           }
-        }
+        });
         if (best) setActive(best);
       },
       { rootMargin: '-28% 0px -55% 0px', threshold: [0, 0.2, 0.4, 0.6, 0.8] }

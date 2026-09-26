@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { heatmap } from '../lib/heatmap';
+import { heatmap } from '../utils/heatmap';
 
 const RAMP = ' .:-=+*!?<>|iIlZXUYQ$#%@';
 
@@ -19,13 +19,6 @@ interface AsciiFieldProps {
   maskY?: number;
   /** Mask glyph height as a fraction of the field. */
   maskScale?: number;
-}
-
-function noise(x: number, y: number, t: number) {
-  const a = Math.sin(x * 0.14 + t * 0.9) * Math.cos(y * 0.19 - t * 0.6);
-  const b = Math.sin((x + y) * 0.07 - t * 1.1);
-  const c = Math.sin(Math.sqrt(x * x * 0.6 + y * y * 2.2) * 0.09 - t * 1.4);
-  return (a + b * 0.8 + c * 0.7) / 2.5;
 }
 
 export function AsciiField({
@@ -147,9 +140,7 @@ export function AsciiField({
     };
 
     const kick = () => {
-      if (!raf && visible && !document.hidden) {
-        raf = requestAnimationFrame(render);
-      }
+      if (!raf && visible && !document.hidden) raf = requestAnimationFrame(render);
     };
 
     const io = new IntersectionObserver(
@@ -173,11 +164,7 @@ export function AsciiField({
     const onMove = (e: PointerEvent) => {
       if (!interactive || !visible) return;
       const rect = canvas.getBoundingClientRect();
-      pointer.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        active: true
-      };
+      pointer.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, active: true };
     };
     const onLeave = () => {
       pointer.current = { x: -999, y: -999, active: false };
@@ -186,19 +173,31 @@ export function AsciiField({
     resize();
     paint(performance.now());
     kick();
+    // Re-render the mask once web fonts are ready so the glyphs use Geist.
+    document.fonts?.ready.then(() => {
+      resize();
+      paint(performance.now());
+    });
     window.addEventListener('resize', resize);
     window.addEventListener('pointermove', onMove);
-    window.addEventListener('pointerleave', onLeave);
+    document.documentElement.addEventListener('pointerleave', onLeave);
     document.addEventListener('visibilitychange', onVis);
     return () => {
       io.disconnect();
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerleave', onLeave);
+      document.documentElement.removeEventListener('pointerleave', onLeave);
       document.removeEventListener('visibilitychange', onVis);
     };
   }, [maskText, cellWidth, cellHeight, speed, intensity, interactive, chroma, maskY, maskScale]);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={className} />;
+}
+
+function noise(x: number, y: number, t: number) {
+  const a = Math.sin(x * 0.14 + t * 0.9) * Math.cos(y * 0.19 - t * 0.6);
+  const b = Math.sin((x + y) * 0.07 - t * 1.1);
+  const c = Math.sin(Math.sqrt(x * x * 0.6 + y * y * 2.2) * 0.09 - t * 1.4);
+  return (a + b * 0.8 + c * 0.7) / 2.5;
 }

@@ -62,7 +62,8 @@ export default {content: [
         magenta: '#c45a9a'
       },
       fontFamily: {
-        heading: ['Geist'],
+        heading: ['Geist', 'sans-serif'],
+        display: ['"Instrument Serif"', 'Georgia', 'serif'],
         mono: ['"Geist Mono"']
       }
     }

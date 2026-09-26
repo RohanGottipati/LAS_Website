@@ -3,7 +3,7 @@ export function heatmap(v: number, nx = 0.5, ny = 0.5): [number, number, number]
   const t = clamp(v);
   const spatial = clamp(nx * 0.35 + ny * 0.55);
   let hue = 174 - t * 20 - spatial * 16;
-  hue = ((hue % 360) + 360) % 360;
+  hue = (hue % 360 + 360) % 360;
   const s = 0.36 + t * 0.24;
   const val = 0.38 + t * 0.52;
   return hsv2rgb(hue, Math.min(0.54, s), Math.min(0.9, val));
@@ -19,7 +19,7 @@ function clamp(n: number) {
 
 function hsv2rgb(h: number, s: number, v: number): [number, number, number] {
   const c = v * s;
-  const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+  const x = c * (1 - Math.abs(h / 60 % 2 - 1));
   const m = v - c;
   let r = 0;
   let g = 0;

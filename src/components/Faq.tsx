@@ -8,17 +8,29 @@ export function Faq() {
   return (
     <section id="faq" className="border-b border-paper/10 py-24 sm:py-32">
       <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20">
-        <SectionHeading
-          index="06 / FAQ"
-          title="Questions we get every September."
-          description="Still unsure? Ask us in the Discord — someone from the exec team usually answers within a day."
-        />
+        <div>
+          <SectionHeading
+            index="06 / FAQ"
+            title="Questions we get *every September.*"
+            description="Still unsure? Send us a DM on Instagram — someone from the exec team usually answers within a day." />
+          
+          <Reveal delay={0.18}>
+            <a
+              href="https://www.instagram.com/laurier_analytics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost mt-8">
+              
+              Message @laurier_analytics
+            </a>
+          </Reveal>
+        </div>
 
         <Reveal delay={0.1}>
-          <Accordion type="single" className="w-full border-t border-paper/10">
-            {faqs.map((item, i) => (
-              <AccordionItem key={item.q} value={`faq-${i}`} className="border-b border-paper/10">
-                <AccordionTrigger className="py-5 text-left font-heading text-[15px] text-paper hover:no-underline hover:text-paper data-[state=open]:text-paper">
+          <Accordion type="single" defaultValue="faq-0" className="w-full border-t border-paper/10">
+            {faqs.map((item, i) =>
+            <AccordionItem key={item.q} value={`faq-${i}`} className="border-b border-paper/10">
+                <AccordionTrigger className="py-5 text-left font-heading text-[15px] text-paper hover:text-paper hover:no-underline data-[state=open]:text-paper">
                   <span className="flex items-baseline gap-4">
                     <span className="font-mono text-[11px] text-cyan/70">0{i + 1}</span>
                     {item.q}
@@ -28,10 +40,10 @@ export function Faq() {
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
-            ))}
+            )}
           </Accordion>
         </Reveal>
       </div>
-    </section>
-  );
+    </section>);
+
 }

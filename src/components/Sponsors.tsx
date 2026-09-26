@@ -2,25 +2,26 @@ import React from 'react';
 import { sponsors } from '../data/site';
 import { Reveal } from './Reveal';
 
-function Row({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
+function Row({ items, reverse = false }: {items: string[];reverse?: boolean;}) {
   const doubled = [...items, ...items];
   return (
     <div className="las-marquee-wrap relative overflow-hidden py-5">
       <div
         className={`las-marquee flex w-max gap-14 whitespace-nowrap ${reverse ? 'las-marquee-rev' : ''}`}
-        style={{ ['--marquee-duration' as string]: '34s' }}
-      >
-        {doubled.map((name, i) => (
-          <span
-            key={`${name}-${i}`}
-            className="font-heading text-lg font-medium tracking-[0.12em] text-paper/35 transition-colors duration-300 hover:text-cyan sm:text-xl"
-          >
+        style={{ ['--marquee-duration' as string]: '34s' }}>
+        
+        {doubled.map((name, i) =>
+        <span
+          key={`${name}-${i}`}
+          aria-hidden={i >= items.length ? true : undefined}
+          className="font-heading text-lg font-medium tracking-[0.12em] text-paper/35 transition-colors duration-300 hover:text-cyan sm:text-xl">
+          
             {name}
           </span>
-        ))}
+        )}
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 export function Sponsors() {
@@ -38,6 +39,6 @@ export function Sponsors() {
         <div className="h-px w-full bg-paper/10" />
         <Row items={[...sponsors].reverse()} reverse />
       </div>
-    </section>
-  );
+    </section>);
+
 }

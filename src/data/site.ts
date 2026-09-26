@@ -1,3 +1,8 @@
+export const brand = {
+  name: 'Laurier Analytics Society',
+  short: 'LAS'
+};
+
 export const navLinks = [
 { label: 'About', href: '#about' },
 { label: 'Impact', href: '#impact' },
@@ -12,67 +17,63 @@ export const aboutParagraphs = [
 'We turn coursework into career capital: hands-on workshops, case competitions, industry mentorship and a datathon that ships real analysis for real partners.'];
 
 
+export const aboutFacts = [
+{ k: 'Founded', v: '2019' },
+{ k: 'Portfolios', v: '06' },
+{ k: 'Campus', v: 'Waterloo' }];
+
+
 export const stats = [
 { value: 24, suffix: '+', label: 'Events per year', detail: 'workshops / socials / panels' },
 { value: 38, suffix: '', label: 'Executive members', detail: 'across 6 portfolios' },
 { value: 2400, suffix: '+', label: 'Students reached', detail: 'BBA, Fin Math, DS, Econ' },
-{ value: 96, suffix: '%', label: 'Would return', detail: 'post-event survey, 2025' }];
+{ value: 96, suffix: '%', label: 'Would return', detail: 'post-event survey, 2026' }];
 
 
 export const impactEvents = [
 {
   label: 'Analytics Bootcamp',
   meta: '1,840 seats · 92% attendance',
-  images: [
-  '/events/bootcamp-1.svg',
-  '/events/bootcamp-2.svg',
-  '/events/bootcamp-3.svg',
-  '/events/bootcamp-4.svg',
-  '/events/bootcamp-5.svg']
+  images: ["/b0fe33a0-c9c2-4ffd-aee3-f8494ae0cdca.jpg", "/d1853298-0a78-455a-90e2-c3e7e14e3bda.jpg", "/01f72e1a-b10e-401f-9544-526c9cd83eb0.jpg"]
+
+
+
 
 },
 {
   label: 'Case Competition Circuit',
   meta: '312 competitors · 74% participation',
-  images: [
-  '/events/cases-1.svg',
-  '/events/cases-2.svg',
-  '/events/cases-3.svg',
-  '/events/cases-4.svg',
-  '/events/cases-5.svg']
+  images: ["/4365f002-726a-40b2-9eb6-da5851a478e5.jpg", "/40a3f51e-9fb8-4e47-b98d-492548e9197a.jpg", "/fd6d0476-489a-451f-955b-f990ac772fe2.jpg"]
+
+
+
 
 },
 {
   label: 'Speaker Series',
   meta: '18 partner companies · 9 sessions',
-  images: [
-  '/events/speakers-1.svg',
-  '/events/speakers-2.svg',
-  '/events/speakers-3.svg',
-  '/events/speakers-4.svg',
-  '/events/speakers-5.svg']
+  images: ["/f204cfa3-9065-407a-bc2b-e4ccb53b7ad0.jpg", "/f9cf5e5f-5208-432f-a21a-83bf08464618.jpg", "/63977fc0-5799-4d9f-9f7d-7cd392fa6072.jpg"]
+
+
+
 
 },
 {
   label: 'Mentorship Program',
   meta: '146 pairs · 83% match rate',
-  images: [
-  '/events/mentorship-1.svg',
-  '/events/mentorship-2.svg',
-  '/events/mentorship-3.svg',
-  '/events/mentorship-4.svg',
-  '/events/mentorship-5.svg']
+  images: ["/cd2122a3-f97c-4677-8e5d-a0c2f85d4dbc.jpg", "/02115bde-205e-4837-8da2-cde98f486c37.jpg", "/d15ed4b8-550e-4dd4-9fe9-a700f9add1f8.jpg"]
+
+
+
 
 },
 {
   label: 'LAS Datathon',
   meta: '350 participants · 71 reported offers',
-  images: [
-  '/events/datathon-1.svg',
-  '/events/datathon-2.svg',
-  '/events/datathon-3.svg',
-  '/events/datathon-4.svg',
-  '/events/datathon-5.svg']
+  images: ["/394422da-f151-4fe1-a529-0ff189cea3ec.jpg", "/2d03bf79-f6c0-4b51-9205-8eb689d343fb.jpg", "/87b9a3f5-3ab1-48c4-b12e-902f6346af24.jpg"]
+
+
+
 
 }];
 
@@ -90,50 +91,50 @@ export const initiatives = [
 {
   code: 'INIT_01',
   title: 'Analytics Bootcamp',
-  blurb:
-  'A six-week track through SQL, Python and dashboarding. Students leave with a portfolio project and a reviewed resume.',
+  blurb: 'A six-week track through SQL, Python and dashboarding. Students leave with a portfolio project and a reviewed resume.',
   tags: ['SQL', 'Python', 'Power BI'],
-  metric: '6 weeks / 120 seats'
+  metric: '6 weeks / 120 seats',
+  href: '#newsletter'
 },
 {
   code: 'INIT_02',
   title: 'Case Competition Circuit',
-  blurb:
-  'Monthly analytics cases with real partner datasets, judged by alumni working in consulting, banking and product.',
+  blurb: 'Monthly analytics cases with real partner datasets, judged by alumni working in consulting, banking and product.',
   tags: ['Cases', 'Judging', 'Prizes'],
-  metric: '8 cases / $6K awarded'
+  metric: '8 cases / $6K awarded',
+  href: '#impact'
 },
 {
   code: 'INIT_03',
   title: 'Mentorship Program',
-  blurb:
-  'First and second years get paired with upper-year students and alumni for structured monthly check-ins.',
+  blurb: 'First and second years get paired with upper-year students and alumni for structured monthly check-ins.',
   tags: ['1:1', 'Alumni', 'Career'],
-  metric: '146 matches'
+  metric: '146 matches',
+  href: '#faq'
 },
 {
   code: 'INIT_04',
   title: 'Speaker Series',
-  blurb:
-  'Practitioners from Shopify, RBC, Deloitte and Wealthsimple break down how decisions actually get made with data.',
+  blurb: 'Practitioners from Shopify, RBC, Deloitte and Wealthsimple break down how decisions actually get made with data.',
   tags: ['Panels', 'Networking'],
-  metric: '9 sessions / yr'
+  metric: '9 sessions / yr',
+  href: '#impact'
 },
 {
   code: 'INIT_05',
   title: 'Research Lab',
-  blurb:
-  'Small teams publish open analyses on campus life, markets and sports \u2014 with code reviewed by faculty advisors.',
+  blurb: 'Small teams publish open analyses on campus life, markets and sports \u2014 with code reviewed by faculty advisors.',
   tags: ['Open data', 'Notebooks'],
-  metric: '11 papers shipped'
+  metric: '11 papers shipped',
+  href: '#team'
 },
 {
   code: 'INIT_06',
   title: 'LAS Newsletter',
-  blurb:
-  'A biweekly signal-over-noise digest: events, deadlines, internships and one chart worth your attention.',
+  blurb: 'A biweekly signal-over-noise digest: events, deadlines, internships and one chart worth your attention.',
   tags: ['Biweekly', 'Free'],
-  metric: '2,400 subscribers'
+  metric: '2,400 subscribers',
+  href: '#newsletter'
 }];
 
 
@@ -156,18 +157,9 @@ export const datathonStats = [
 
 
 export const datathonTracks = [
-{
-  title: 'Campus Ops',
-  blurb: 'Optimize scheduling, transit and space usage with live Laurier operational data.'
-},
-{
-  title: 'Markets',
-  blurb: 'Build a signal, backtest it honestly, and defend it to a room of quants.'
-},
-{
-  title: 'Social Good',
-  blurb: 'Partner with Waterloo Region nonprofits to turn their raw records into decisions.'
-}];
+{ title: 'Campus Ops', blurb: 'Optimize scheduling, transit and space usage with live Laurier operational data.' },
+{ title: 'Markets', blurb: 'Build a signal, backtest it honestly, and defend it to a room of quants.' },
+{ title: 'Social Good', blurb: 'Partner with Waterloo Region nonprofits to turn their raw records into decisions.' }];
 
 
 export const sponsors = [
@@ -209,5 +201,4 @@ export const faqs = [
 export const socials = [
 { label: 'Instagram', handle: '@laurier_analytics', url: 'https://www.instagram.com/laurier_analytics' },
 { label: 'LinkedIn', handle: '/company/laurier-analytics-society-las', url: 'https://www.linkedin.com/company/laurier-analytics-society-las' },
-{ label: 'Discord', handle: 'discord.gg/las' },
-{ label: 'GitHub', handle: '/laurier-analytics' }];
+{ label: 'Newsletter', handle: 'Biweekly digest', url: '#newsletter' }];
