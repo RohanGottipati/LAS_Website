@@ -57,7 +57,7 @@ export function Preloader({ onDone }: PreloaderProps) {
         
           <div className="flex items-center justify-between px-5 pt-6 font-mono text-[10.5px] uppercase tracking-[0.26em] text-paper/45 sm:px-8">
             <span>Waterloo, ON</span>
-            <span>Est. 2019</span>
+            <span>Est. 2021</span>
           </div>
 
           <div className="flex flex-1 flex-col items-center justify-center px-5">
