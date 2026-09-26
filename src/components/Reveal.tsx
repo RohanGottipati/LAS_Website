@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 interface RevealProps {
   children: React.ReactNode;
@@ -10,16 +11,22 @@ interface RevealProps {
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export function Reveal({ children, delay = 0, y = 22, className }: RevealProps) {
+export function Reveal({ children, delay = 0, y = 18, className }: RevealProps) {
+  const reduced = usePrefersReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-90px' }}
-      transition={{ duration: 0.75, delay, ease: EASE }}>
-      
+      transition={{ duration: 0.7, delay, ease: EASE }}
+    >
       {children}
-    </motion.div>);
-
+    </motion.div>
+  );
 }

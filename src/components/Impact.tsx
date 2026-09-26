@@ -49,30 +49,30 @@ function EventItem({
       onMouseEnter={onActivate}
       onFocus={onActivate}
       onClick={onToggle}
-      className="group flex w-full items-center gap-4 border-t border-white/10 py-5 text-left outline-none first:border-t-0 focus-visible:ring-1 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080a]">
+      className="group flex w-full items-center gap-4 border-t border-paper/10 py-5 text-left outline-none first:border-t-0 focus-visible:ring-1 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ink">
 
       <span
         className={`h-4 w-px transition-colors duration-300 ${
-        highlighted ? 'bg-zinc-200' : 'bg-transparent'}`
+        highlighted ? 'bg-gold' : 'bg-transparent'}`
         } />
 
-      <span className="font-mono text-[11px] tabular-nums text-zinc-600">
+      <span className={`font-mono text-[11px] tabular-nums ${highlighted ? 'text-gold' : 'text-paper/35'}`}>
         {String(index + 1).padStart(2, '0')}
       </span>
       <span className="min-w-0">
         <span
           className={`block font-heading text-sm transition-colors duration-300 ${
-          highlighted ? 'text-white' : 'text-zinc-200 group-hover:text-white'}`
+          highlighted ? 'text-paper' : 'text-paper/80 group-hover:text-paper'}`
           }>
 
           {label}
         </span>
-        <span className="mt-1 block font-mono text-[10px] tracking-[0.08em] text-zinc-500">
+        <span className="mt-1 block font-mono text-[10px] tracking-[0.08em] text-paper/45">
           {meta}
         </span>
       </span>
       <span
-        className={`ml-auto hidden shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 transition-opacity duration-300 sm:inline ${
+        className={`ml-auto hidden shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-gold/70 transition-opacity duration-300 sm:inline ${
         pinned ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100'}`
         }>
 
@@ -121,7 +121,7 @@ function EventGallery({
   if (len === 0) {
     return (
       <div className="flex h-full min-h-[320px] items-center justify-center">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-paper/45">
           Photos coming soon
         </p>
       </div>);
@@ -134,7 +134,7 @@ function EventGallery({
 
   return (
     <div className="relative h-full min-h-[320px] w-full overflow-hidden lg:min-h-[352px]">
-      <p className="absolute left-0 top-0 z-10 font-mono text-[10.5px] uppercase tracking-[0.22em] text-zinc-500">
+      <p className="absolute left-0 top-0 z-10 font-mono text-[10.5px] uppercase tracking-[0.22em] text-gold/70">
         {label}
       </p>
       <div className="absolute inset-0 mt-10">
@@ -153,11 +153,11 @@ function EventGallery({
               onFocus={() => setHovered(i)}
               onBlur={() => setHovered(null)}
               onClick={() => onOpenPhoto({ src, alt, label })}
-              className={`absolute left-1/2 top-1/2 h-[min(250px,46vw)] w-[min(356px,78%)] cursor-pointer overflow-hidden border bg-[#0b0b0d] shadow-2xl shadow-black/60 outline-none focus-visible:ring-2 focus-visible:ring-white ${
-              isHovered ? 'border-white ring-2 ring-white/80' : 'border-white/10'}`
+              className={`absolute left-1/2 top-1/2 h-[min(250px,46vw)] w-[min(356px,78%)] cursor-pointer overflow-hidden border bg-panel shadow-2xl shadow-black/60 outline-none focus-visible:ring-2 focus-visible:ring-gold ${
+              isHovered ? 'border-gold ring-2 ring-gold/70' : 'border-paper/10'}`
               }
               style={{ zIndex: isHovered ? len + 1 : slot }}
-              initial={reduceMotion ? { opacity: 1, x: '-50%', y: '-50%' } : { opacity: 0, y: 28, rotate: 0, x: '-50%' }}
+              initial={false}
               animate={{
                 opacity: 1,
                 y: `calc(-50% + ${offset * spreadY}px)`,
@@ -242,14 +242,14 @@ function PhotoLightbox({
         type="button"
         onClick={onClose}
         aria-label="Close photo"
-        className="absolute right-6 top-6 z-10 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-300 outline-none transition-colors hover:text-white focus-visible:text-white focus-visible:ring-1 focus-visible:ring-white/60">
+        className="absolute right-6 top-6 z-10 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/70 outline-none transition-colors hover:text-gold focus-visible:text-gold focus-visible:ring-1 focus-visible:ring-gold/60">
 
         Close ✕
       </button>
       <motion.img
         src={photo.src}
         alt={photo.alt}
-        className="max-h-[85vh] max-w-[90vw] border border-white/10 object-contain shadow-2xl shadow-black/60"
+        className="max-h-[85vh] max-w-[90vw] border border-gold/20 object-contain shadow-2xl shadow-black/60"
         initial={{ scale: 0.92, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.92, opacity: 0 }}
@@ -278,10 +278,10 @@ function GrowthChart() {
   return (
     <div ref={ref}>
       <div className="flex items-baseline justify-between">
-        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-zinc-500">
+        <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-gold/70">
           Students reached / year
         </p>
-        <p className="font-mono text-[11px] text-zinc-400">+1,233% since 2021</p>
+        <p className="font-mono text-[11px] text-paper/50">+1,233% since 2021</p>
       </div>
       <svg viewBox={`0 0 ${w} ${h}`} className="mt-5 w-full" role="img" aria-label="Growth of students reached per year">
         {[0.25, 0.5, 0.75].map((g) =>
@@ -291,13 +291,13 @@ function GrowthChart() {
           x2={w - pad}
           y1={pad + g * (h - pad * 2)}
           y2={pad + g * (h - pad * 2)}
-          stroke="rgba(255,255,255,0.06)"
+          stroke="rgba(201,162,39,0.12)"
           strokeDasharray="3 6" />
 
         )}
         <motion.path
           d={area}
-          fill="rgba(255,255,255,0.06)"
+          fill="rgba(201,162,39,0.12)"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.7 }} />
@@ -305,7 +305,7 @@ function GrowthChart() {
         <motion.path
           d={line}
           fill="none"
-          stroke="rgba(228,228,231,0.9)"
+          stroke="rgba(201,162,39,0.95)"
           strokeWidth={1.5}
           initial={{ pathLength: 0 }}
           animate={inView ? { pathLength: 1 } : {}}
@@ -317,8 +317,8 @@ function GrowthChart() {
           cx={x}
           cy={y}
           r={2.6}
-          fill="#0b0b0d"
-          stroke="#e4e4e7"
+          fill="#09080e"
+          stroke="#c9a227"
           strokeWidth={1.2}
           initial={{ opacity: 0, scale: 0 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
@@ -326,7 +326,7 @@ function GrowthChart() {
 
         )}
       </svg>
-      <div className="mt-3 flex justify-between font-mono text-[10px] tracking-[0.14em] text-zinc-600">
+      <div className="mt-3 flex justify-between font-mono text-[10px] tracking-[0.14em] text-paper/40">
         {impactSeries.map((d) =>
         <span key={d.year}>{d.year}</span>
         )}
@@ -355,7 +355,7 @@ export function Impact() {
   };
 
   return (
-    <section id="impact" className="border-b border-white/10 py-24 sm:py-32">
+    <section id="impact" className="border-b border-paper/10 py-24 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <SectionHeading
           index="02 / Impact"
@@ -393,7 +393,7 @@ export function Impact() {
             </div>
           </Reveal>
           <Reveal delay={0.12}>
-            <div className="relative min-h-[400px] overflow-hidden border border-white/10 bg-[#0b0b0d] p-6">
+            <div className="relative min-h-[400px] overflow-hidden border border-paper/10 bg-panel p-6">
               <div
                 className={preview ? 'pointer-events-none invisible' : undefined}
                 aria-hidden={preview ? true : undefined}>

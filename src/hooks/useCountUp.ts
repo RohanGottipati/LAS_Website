@@ -8,6 +8,11 @@ export function useCountUp(target: number, duration = 1800) {
 
   useEffect(() => {
     if (!inView) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      setValue(target);
+      return;
+    }
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {

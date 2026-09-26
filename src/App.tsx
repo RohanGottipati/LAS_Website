@@ -33,7 +33,7 @@ export function App({ asciiDensity = 'standard', showSponsors = true }: AppProps
   const cell = DENSITY[asciiDensity];
 
   return (
-    <div className="min-h-screen w-full bg-[#08080a] font-heading text-zinc-200 antialiased">
+    <div className="min-h-screen w-full bg-ink font-heading text-paper antialiased">
       <Nav />
       <main>
         <Hero cellWidth={cell.w} cellHeight={cell.h} />

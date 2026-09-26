@@ -44,7 +44,22 @@ export default {content: [
         'sidebar-accent-foreground': 'var(--sidebar-accent-foreground)',
         'sidebar-border': 'var(--sidebar-border)',
         'sidebar-ring': 'var(--sidebar-ring)',
-        'destructive-foreground': 'var(--destructive-foreground)'
+        'destructive-foreground': 'var(--destructive-foreground)',
+        ink: '#09080e',
+        panel: '#100f16',
+        lift: '#18171f',
+        paper: '#ece9e2',
+        gold: {
+          DEFAULT: '#c9a227',
+          soft: '#e4c45a'
+        },
+        violet: {
+          DEFAULT: '#8b6cc9',
+          deep: '#5c4588'
+        },
+        trace: '#5aada2',
+        heat: '#d4784a',
+        magenta: '#c45a9a'
       },
       fontFamily: {
         heading: ['Geist'],

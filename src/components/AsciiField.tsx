@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { heatmap } from '../lib/heatmap';
 
 const RAMP = ' .:-=+*!?<>|iIlZXUYQ$#%@';
 
@@ -12,6 +13,8 @@ interface AsciiFieldProps {
   /** 0 = flat noise, 1 = strong mask contrast */
   intensity?: number;
   interactive?: boolean;
+  /** Full chroma heatmap vs a quieter wash for background sections. */
+  chroma?: number;
 }
 
 function noise(x: number, y: number, t: number) {
@@ -28,7 +31,8 @@ export function AsciiField({
   cellHeight = 14,
   speed = 1,
   intensity = 0.9,
-  interactive = true
+  interactive = true,
+  chroma = 1
 }: AsciiFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const pointer = useRef({ x: -999, y: -999, active: false });
@@ -36,7 +40,7 @@ export function AsciiField({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
     let cols = 0;
@@ -44,6 +48,7 @@ export function AsciiField({
     let mask: Float32Array = new Float32Array(0);
     let raf = 0;
     let last = 0;
+    let visible = true;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const buildMask = () => {
@@ -54,7 +59,6 @@ export function AsciiField({
       off.height = rows;
       const octx = off.getContext('2d');
       if (!octx) return;
-      // Compensate for non-square cells so text isn't squashed.
       octx.save();
       octx.scale(1, cellWidth / cellHeight);
       const virtualH = rows * (cellHeight / cellWidth);
@@ -84,12 +88,8 @@ export function AsciiField({
       buildMask();
     };
 
-    const render = (now: number) => {
-      raf = requestAnimationFrame(render);
-      if (now - last < 33) return;
-      last = now;
+    const paint = (now: number) => {
       const t = reduced ? 0 : now / 1000 * speed;
-
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
       ctx.font = `${cellHeight - 3}px "Geist Mono", ui-monospace, monospace`;
@@ -98,8 +98,10 @@ export function AsciiField({
       const p = pointer.current;
       const px = p.x / cellWidth;
       const py = p.y / cellHeight;
+      const chromaClamp = Math.min(1, Math.max(0.25, chroma));
 
       for (let y = 0; y < rows; y++) {
+        const ny = rows <= 1 ? 0.5 : y / (rows - 1);
         for (let x = 0; x < cols; x++) {
           let v = noise(x, y, t) * 0.5 + 0.5;
           const m = mask[y * cols + x] || 0;
@@ -114,17 +116,56 @@ export function AsciiField({
           const idx = Math.min(RAMP.length - 1, Math.max(0, Math.floor(v * RAMP.length)));
           const ch = RAMP[idx];
           if (ch === ' ') continue;
-          const alpha = 0.06 + Math.min(0.94, v * v) * 0.72;
-          ctx.fillStyle = `rgba(${230 - Math.floor((1 - v) * 60)},${232 - Math.floor((1 - v) * 60)},${
-          236 - Math.floor((1 - v) * 60)},${
-          alpha.toFixed(3)})`;
+          const nx = cols <= 1 ? 0.5 : x / (cols - 1);
+          const [r, g, b] = heatmap(Math.min(1, v), nx, ny);
+          const gray = 0.22 * r + 0.72 * g + 0.06 * b;
+          const cr = Math.round(gray + (r - gray) * chromaClamp);
+          const cg = Math.round(gray + (g - gray) * chromaClamp);
+          const cb = Math.round(gray + (b - gray) * chromaClamp);
+          const alpha = 0.28 + Math.min(0.72, v * 0.7);
+          ctx.fillStyle = `rgba(${cr},${cg},${cb},${alpha.toFixed(3)})`;
           ctx.fillText(ch, x * cellWidth, y * cellHeight);
         }
       }
     };
 
+    const render = (now: number) => {
+      if (!visible || document.hidden) {
+        raf = 0;
+        return;
+      }
+      raf = requestAnimationFrame(render);
+      if (now - last < 33) return;
+      last = now;
+      paint(now);
+    };
+
+    const kick = () => {
+      if (!raf && visible && !document.hidden) {
+        raf = requestAnimationFrame(render);
+      }
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) kick();
+      },
+      { threshold: 0.02 }
+    );
+    io.observe(canvas);
+
+    const onVis = () => {
+      if (document.hidden) {
+        if (raf) cancelAnimationFrame(raf);
+        raf = 0;
+      } else {
+        kick();
+      }
+    };
+
     const onMove = (e: PointerEvent) => {
-      if (!interactive) return;
+      if (!interactive || !visible) return;
       const rect = canvas.getBoundingClientRect();
       pointer.current = {
         x: e.clientX - rect.left,
@@ -137,17 +178,21 @@ export function AsciiField({
     };
 
     resize();
-    raf = requestAnimationFrame(render);
+    paint(performance.now());
+    kick();
     window.addEventListener('resize', resize);
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerleave', onLeave);
+    document.addEventListener('visibilitychange', onVis);
     return () => {
-      cancelAnimationFrame(raf);
+      io.disconnect();
+      if (raf) cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerleave', onLeave);
+      document.removeEventListener('visibilitychange', onVis);
     };
-  }, [maskText, cellWidth, cellHeight, speed, intensity, interactive]);
+  }, [maskText, cellWidth, cellHeight, speed, intensity, interactive, chroma]);
 
   return <canvas ref={canvasRef} aria-hidden="true" className={className} />;
 }
