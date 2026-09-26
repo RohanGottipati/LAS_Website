@@ -23,7 +23,7 @@ export function SectionHeading({ index, title, description, align = 'left' }: Se
           <span className="h-px w-10 bg-cyan/40" />
         </div>
       </Reveal>
-      <h2 className="mt-5 font-display text-[2.6rem] leading-[1] tracking-[-0.01em] text-paper sm:text-[3.5rem]">
+      <h2 className="mt-12 font-display text-[2.6rem] leading-[1.12] tracking-[-0.01em] text-paper sm:text-[3.5rem]">
         <WordReveal text={title} delay={0.05} />
       </h2>
       {description ?

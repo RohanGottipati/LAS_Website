@@ -3,68 +3,81 @@ import { motion } from 'framer-motion';
 
 interface LogoMarkProps {
   className?: string;
-  /** Bars grow in one by one (used by the intro). */
+  /** Strokes draw themselves in (used by the intro). */
   draw?: boolean;
-  /** Hover / pressed emphasis (used by the cursor and nav). */
-  active?: boolean;
 }
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const PAPER = '#e6eef0';
+const CYAN = '#5EEAD4';
 
 /**
- * LAS mark: a pointer cursor built from a histogram. Five descending bars trace
- * the arrow's edge (the last one shrinks into a single data point), and the
- * tail is one more bar. The tip at (7,4) is the cursor hotspot.
+ * LAS monogram built from chart primitives:
+ *  L: a pair of chart axes
+ *  A: a line chart peaking at a highlighted data point, with a dashed mean line
+ *  S: a fitted curve running through scattered observations
  */
-export const LOGO_BARS = [
-{ x: 7, top: 4, bottom: 32, o: 1 },
-{ x: 11.8, top: 8.2, bottom: 30.1, o: 0.88 },
-{ x: 16.6, top: 12.4, bottom: 28.2, o: 0.76 },
-{ x: 21.4, top: 16.6, bottom: 26.3, o: 0.64 },
-{ x: 26.2, top: 20.8, bottom: 24.4, o: 1 }];
+export function LogoMark({ className = 'h-full w-full', draw = false }: LogoMarkProps) {
+  const stroke = (delay: number, duration = 0.8) => ({
+    initial: draw ? { pathLength: 0, opacity: 0 } : false,
+    animate: { pathLength: 1, opacity: 1 },
+    transition: { pathLength: { duration, delay, ease: EASE }, opacity: { duration: 0.01, delay } }
+  });
+  const pop = (delay: number) => ({
+    initial: draw ? { scale: 0 } : false,
+    animate: { scale: 1 },
+    transition: { duration: 0.45, delay, ease: EASE }
+  });
 
-export const LOGO_HOTSPOT = { x: 7, y: 4 };
-const BAR_W = 3.6;
-
-export function LogoMark({ className = 'h-full w-full', draw = false, active = false }: LogoMarkProps) {
   return (
-    <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden="true">
-      {LOGO_BARS.map((b, i) => {
-        const last = i === LOGO_BARS.length - 1;
-        return (
-          <motion.rect
-            key={i}
-            x={b.x}
-            y={b.top}
-            width={BAR_W}
-            height={b.bottom - b.top}
-            fill="#5EEAD4"
-            style={{ transformBox: 'fill-box', transformOrigin: last ? 'center' : 'bottom' }}
-            initial={draw ? { scaleY: 0, scale: last ? 0 : 1, opacity: 0 } : false}
-            animate={{
-              scaleY: active && !last ? [1, 1.06, 1] : 1,
-              scale: active && last ? 1.35 : 1,
-              opacity: active ? 1 : b.o
-            }}
-            transition={{
-              duration: draw ? 0.7 : 0.35,
-              delay: draw ? 0.15 + i * 0.09 : active ? i * 0.03 : 0,
-              ease: EASE
-            }} />);
-
-
-      })}
-      <motion.rect
-        x={16.8}
-        y={26.6}
-        width={BAR_W}
-        height={9.6}
-        fill="#e6eef0"
-        transform="rotate(-26 18.6 26.6)"
-        initial={draw ? { opacity: 0 } : false}
-        animate={{ opacity: 0.92 }}
-        transition={{ duration: 0.5, delay: draw ? 0.7 : 0 }} />
+    <svg viewBox="0 0 72 32" className={className} fill="none" aria-hidden="true">
+      {/* L: axes */}
+      <motion.path
+        d="M4 3.5 V28 H18"
+        stroke={PAPER}
+        strokeWidth={3.2}
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        {...stroke(0)} />
       
+      <motion.path d="M4 16 H6.5 M11 28 V25.5" stroke={PAPER} strokeOpacity={0.45} strokeWidth={1.4} {...stroke(0.5, 0.3)} />
+
+      {/* A: peak line chart */}
+      <motion.path
+        d="M22.5 28 L31 5.5 L39.5 28"
+        stroke={CYAN}
+        strokeWidth={3.2}
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        {...stroke(0.25)} />
+      
+      <motion.path d="M25.8 20 H36.2" stroke={CYAN} strokeOpacity={0.7} strokeWidth={1.4} strokeDasharray="1.6 1.8" {...pop(0.75)} style={{ transformOrigin: '31px 20px' }} />
+      <motion.circle cx={31} cy={5.5} r={3.4} fill="#070b0d" stroke={CYAN} strokeWidth={2} style={{ transformOrigin: '31px 5.5px' }} {...pop(0.9)} />
+
+      {/* S: fitted curve through observations */}
+      <motion.path
+        d="M64 8 C62.4 5.3 59.6 4 56 4 C51.2 4 47.6 6.4 47.6 10.2 C47.6 17 64.4 14.6 64.4 21.6 C64.4 25.6 60.8 28 55.8 28 C51.8 28 48.6 26.6 46.6 23.8"
+        stroke={PAPER}
+        strokeWidth={3.2}
+        strokeLinecap="square"
+        {...stroke(0.45)} />
+      
+      {[
+      { cx: 51, cy: 14.6, r: 1.5 },
+      { cx: 60.8, cy: 17.4, r: 1.5 },
+      { cx: 68, cy: 27, r: 2 }].
+      map((d, i) =>
+      <motion.circle
+        key={i}
+        cx={d.cx}
+        cy={d.cy}
+        r={d.r}
+        fill={CYAN}
+        fillOpacity={i === 2 ? 1 : 0.75}
+        style={{ transformOrigin: `${d.cx}px ${d.cy}px` }}
+        {...pop(1 + i * 0.1)} />
+
+      )}
     </svg>);
 
 }

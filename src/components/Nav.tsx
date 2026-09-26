@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Logo } from './Logo';
-import { Magnetic } from './Magnetic';
 import { navLinks } from '../data/site';
 import { useActiveSection } from '../hooks/useActiveSection';
 
@@ -39,11 +38,9 @@ export function Nav() {
         
         <nav aria-label="Primary" className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 sm:px-8">
           <a href="#top" className="group flex items-center gap-3" aria-label="Laurier Analytics Society, back to top">
-            <Logo className="h-9 w-9" interactive />
-            <span className="hidden font-mono text-[11px] uppercase leading-[1.3] tracking-[0.18em] text-paper/55 transition-colors duration-300 group-hover:text-paper/80 sm:block">
-              Laurier
-              <br />
-              Analytics Society
+            <Logo className="h-7 w-[63px]" interactive />
+            <span className="hidden whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.16em] text-paper/55 transition-colors duration-300 group-hover:text-paper/80 sm:block">
+              Laurier Analytics Society
             </span>
           </a>
 
@@ -72,12 +69,10 @@ export function Nav() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <Magnetic className="hidden sm:inline-flex">
-              <a href="#newsletter" className="btn-signal h-10 px-5 text-[13px]" data-cursor="join">
-                Join the society
-                <ArrowUpRight className="h-3.5 w-3.5" />
-              </a>
-            </Magnetic>
+            <a href="#newsletter" className="btn-signal hidden h-10 px-5 text-[13px] sm:inline-flex" data-cursor="join">
+              Join the society
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}

@@ -51,7 +51,7 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
       <div className="mx-auto max-w-[1400px] px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80">07 / Join us</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80">05 / Join us</p>
           </Reveal>
           <h2 className="mt-5 font-display text-5xl leading-[1] tracking-tight text-paper sm:text-7xl">
             <WordReveal text="Get the signal, *skip the noise.*" delay={0.05} />
@@ -80,7 +80,7 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
                       <Check className="h-4 w-4" />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="font-heading text-sm text-paper">You&apos;re on the list — welcome to LAS.</p>
+                      <p className="font-heading text-sm text-paper">You&apos;re on the list. Welcome to LAS.</p>
                       <p className="mt-1 truncate font-mono text-[11px] text-paper/50">Confirmation sent to {email}</p>
                     </div>
                     <button

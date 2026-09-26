@@ -58,13 +58,14 @@ export function Team() {
   return (
     <section id="team" className="border-b border-paper/10 py-24 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            index="04 / Our Team"
-            title="38 executives. *One shared spreadsheet.*"
-            description="Meet the portfolio leads — the people who run the workshops, wrangle the sponsors, and stay up late cleaning the datathon datasets." />
-          
-          <a href="#faq" className="btn-ghost shrink-0 self-start lg:self-auto">
+        <SectionHeading
+          align="center"
+          index="03 / Our Team"
+          title="38 executives. *One shared spreadsheet.*"
+          description="Meet the portfolio leads, the people who run the workshops, wrangle the sponsors, and stay up late cleaning the datathon datasets." />
+        
+        <div className="mt-8 flex justify-center">
+          <a href="#faq" className="btn-ghost">
             How to join the exec team
           </a>
         </div>

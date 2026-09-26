@@ -61,7 +61,7 @@ export function Preloader({ onDone }: PreloaderProps) {
           </div>
 
           <div className="flex flex-1 flex-col items-center justify-center px-5">
-            <div className="h-20 w-20 sm:h-24 sm:w-24">
+            <div className="h-16 w-36 sm:h-20 sm:w-[180px]">
               <LogoMark draw />
             </div>
             <h2 className="mt-8 text-center font-display text-5xl leading-[0.95] tracking-tight sm:text-7xl">

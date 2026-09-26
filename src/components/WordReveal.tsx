@@ -28,20 +28,26 @@ export function WordReveal({ text, delay = 0, immediate = false, play = true }: 
             </span>);
 
         }
-        const target = { y: '0%', rotate: 0 };
         return (
           <React.Fragment key={i}>
-            <span className="inline-block overflow-hidden pb-[0.12em] align-bottom -mb-[0.12em]">
+            <motion.span
+              className="inline-block overflow-hidden pb-[0.12em] align-bottom -mb-[0.12em]"
+              initial="hidden"
+              {...immediate ?
+                { animate: play ? 'show' : 'hidden' } :
+                { whileInView: 'show', viewport: { once: true, margin: '-80px' } }}>
+              
               <motion.span
                 className={`inline-block will-change-transform ${cls ?? ''}`}
-                initial={{ y: '110%', rotate: 4 }}
-                {...immediate ? { animate: play ? target : undefined } : { whileInView: target }}
-                viewport={{ once: true, margin: '-80px' }}
+                variants={{
+                  hidden: { y: '110%', rotate: 4 },
+                  show: { y: '0%', rotate: 0 }
+                }}
                 transition={{ duration: 0.9, delay: delay + i * 0.055, ease: EASE }}>
                 
                 {w.word}
               </motion.span>
-            </span>{' '}
+            </motion.span>{' '}
           </React.Fragment>);
 
       })}

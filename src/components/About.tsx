@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SectionHeading } from './SectionHeading';
 import { Reveal } from './Reveal';
-import { aboutFacts, aboutParagraphs } from '../data/site';
+import { aboutParagraphs } from '../data/site';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { useTypewriter, type CodeLine } from '../hooks/useTypewriter';
 
@@ -14,7 +14,7 @@ const CODE_LINES: CodeLine[] = [
 { indent: 1, text: 'student.ship(project, reviewed_by="alumni")' },
 { indent: 0, text: '' },
 { indent: 0, text: 'print(las.outcomes())' },
-{ indent: 0, text: '# {"placements": 71, "papers": 11, "reach": 2400}' }];
+{ indent: 0, text: '# {"members": 64, "workshops": 8, "projects": 5}' }];
 
 
 export function About() {
@@ -38,28 +38,17 @@ export function About() {
 
   return (
     <section id="about" className="relative border-b border-paper/10 py-24 sm:py-32">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-20">
-        <div>
-          <SectionHeading index="01 / About" title="A society built around *evidence.*" />
+      <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
+        <div className="text-center">
+          <SectionHeading align="center" index="01 / About" title="A Society built around *evidence.*" />
 
-          <div className="mt-7 space-y-5">
+          <div className="mt-8 space-y-5">
             {aboutParagraphs.map((p, i) =>
             <Reveal key={i} delay={0.1 + i * 0.08}>
-                <p className="max-w-xl text-[15px] leading-relaxed text-paper/60">{p}</p>
+                <p className="mx-auto max-w-2xl text-[15px] leading-relaxed text-paper/60">{p}</p>
               </Reveal>
             )}
           </div>
-
-          <Reveal delay={0.3}>
-            <dl className="mt-10 grid grid-cols-2 gap-px border border-paper/10 bg-paper/10 sm:grid-cols-3">
-              {aboutFacts.map((f) =>
-              <div key={f.k} className="bg-panel px-5 py-5 transition-colors duration-500 hover:bg-lift">
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.24em] text-cyan/70">{f.k}</dt>
-                  <dd className="mt-2 font-display text-3xl text-paper">{f.v}</dd>
-                </div>
-              )}
-            </dl>
-          </Reveal>
         </div>
 
         <Reveal delay={0.12}>

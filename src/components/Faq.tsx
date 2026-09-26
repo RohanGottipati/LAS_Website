@@ -7,26 +7,25 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './
 export function Faq() {
   return (
     <section id="faq" className="border-b border-paper/10 py-24 sm:py-32">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20">
-        <div>
-          <SectionHeading
-            index="06 / FAQ"
-            title="Questions we get *every September.*"
-            description="Still unsure? Send us a DM on Instagram — someone from the exec team usually answers within a day." />
-          
-          <Reveal delay={0.18}>
-            <a
-              href="https://www.instagram.com/laurier_analytics"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost mt-8">
-              
-              Message @laurier_analytics
-            </a>
-          </Reveal>
-        </div>
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+        <SectionHeading
+          align="center"
+          index="04 / FAQ"
+          title="Questions we get *every September.*"
+          description="Still unsure? Send us a DM on Instagram. Someone from the exec team usually answers within a day." />
+        
+        <Reveal delay={0.18} className="mt-8 flex justify-center">
+          <a
+            href="https://www.instagram.com/laurier_analytics"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost">
+            
+            Message @laurier_analytics
+          </a>
+        </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} className="mx-auto mt-14 max-w-3xl">
           <Accordion type="single" defaultValue="faq-0" className="w-full border-t border-paper/10">
             {faqs.map((item, i) =>
             <AccordionItem key={item.q} value={`faq-${i}`} className="border-b border-paper/10">

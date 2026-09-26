@@ -2,12 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
-import { Stats } from './components/Stats';
-import { Impact } from './components/impact/Impact';
-import { Initiatives } from './components/Initiatives';
-import { Team } from './components/Team';
 import { Datathon } from './components/Datathon';
-import { Sponsors } from './components/Sponsors';
+import { Team } from './components/Team';
 import { Faq } from './components/Faq';
 import { Newsletter } from './components/Newsletter';
 import { Footer } from './components/Footer';
@@ -19,7 +15,6 @@ type AsciiDensity = 'fine' | 'standard' | 'bold';
 
 interface AppProps {
   asciiDensity?: AsciiDensity;
-  showSponsors?: boolean;
   showIntro?: boolean;
   customCursor?: boolean;
 }
@@ -32,7 +27,6 @@ const DENSITY: Record<AsciiDensity, {w: number;h: number;}> = {
 
 export function App({
   asciiDensity = 'standard',
-  showSponsors = true,
   showIntro = true,
   customCursor = true
 }: AppProps) {
@@ -42,7 +36,7 @@ export function App({
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    document.title = 'Laurier Analytics Society — Find the signal';
+    document.title = 'Laurier Analytics Society: Find the signal';
   }, []);
 
   useEffect(() => {
@@ -65,12 +59,8 @@ export function App({
         <main>
           <Hero ready={introDone} />
           <About />
-          <Stats />
-          <Impact />
-          <Initiatives />
-          <Team />
           <Datathon cellWidth={cell.w + 1} cellHeight={cell.h + 1} />
-          {showSponsors ? <Sponsors /> : null}
+          <Team />
           <Faq />
           <Newsletter cellWidth={cell.w} cellHeight={cell.h} />
         </main>

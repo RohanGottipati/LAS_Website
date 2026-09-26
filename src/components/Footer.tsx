@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowUp } from 'lucide-react';
 import { Logo } from './Logo';
 import { navLinks, socials } from '../data/site';
@@ -11,7 +10,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)]">
           <div>
             <a href="#top" className="group inline-flex items-center gap-4">
-              <Logo className="h-14 w-14" interactive />
+              <Logo className="h-12 w-[108px]" interactive />
               <span>
                 <span className="block font-display text-2xl leading-none text-paper">Laurier Analytics Society</span>
                 <span className="mt-1 block font-mono text-[10.5px] uppercase tracking-[0.2em] text-cyan/70">
@@ -19,10 +18,6 @@ export function Footer() {
                 </span>
               </span>
             </a>
-            <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-paper/45">
-              A student-run society at Wilfrid Laurier University. Not affiliated with any employer listed; all figures
-              self-reported from our event logs.
-            </p>
           </div>
 
           <nav aria-label="Footer">
@@ -79,19 +74,6 @@ export function Footer() {
           </a>
         </div>
       </div>
-
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="select-none overflow-hidden px-5 pb-6 sm:px-8">
-        
-        <p className="whitespace-nowrap font-display text-[22vw] italic leading-[0.8] tracking-[-0.03em] text-cyan/[0.08]">
-          ANALYTICS
-        </p>
-      </motion.div>
     </footer>);
 
 }
