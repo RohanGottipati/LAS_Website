@@ -6,6 +6,7 @@ import { Datathon } from './components/Datathon';
 import { Team } from './components/Team';
 import { Faq } from './components/Faq';
 import { Newsletter } from './components/Newsletter';
+import { Sponsors } from './components/Sponsors';
 import { Footer } from './components/Footer';
 import { CustomCursor } from './components/CustomCursor';
 import { Preloader } from './components/Preloader';
@@ -63,6 +64,7 @@ export function App({
           <Team />
           <Faq />
           <Newsletter cellWidth={cell.w} cellHeight={cell.h} />
+          <Sponsors cellWidth={cell.w} cellHeight={cell.h} />
         </main>
         <Footer />
       </div>

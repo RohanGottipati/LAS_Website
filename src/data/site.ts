@@ -7,7 +7,8 @@ export const navLinks = [
 { label: 'About', href: '#about' },
 { label: 'Datathon', href: '#datathon' },
 { label: 'Team', href: '#team' },
-{ label: 'FAQ', href: '#faq' }];
+{ label: 'FAQ', href: '#faq' },
+{ label: 'Partners', href: '#partners' }];
 
 
 export const aboutParagraphs = [

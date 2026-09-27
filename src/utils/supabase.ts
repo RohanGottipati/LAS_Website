@@ -72,3 +72,56 @@ export async function subscribe(params: {
 
   return data ?? { ok: false, error: 'Empty response from server.' };
 }
+
+export interface SponsorInquiryResult {
+  ok: boolean;
+  stored?: boolean;
+  email_sent?: boolean;
+  error?: string;
+}
+
+/**
+ * Calls the `sponsor-inquiry` edge function to store a partnership inquiry and
+ * notify the LAS team. Mirrors {@link subscribe}: the DB write is the source of
+ * truth, and the team notification is best-effort.
+ */
+export async function submitSponsorInquiry(params: {
+  company: string;
+  contactName: string;
+  email: string;
+  message?: string;
+  source?: string;
+}): Promise<SponsorInquiryResult> {
+  if (!supabase) {
+    return {
+      ok: false,
+      error: 'Inquiries are not available right now. Please email us directly.',
+    };
+  }
+
+  const { data, error } = await supabase.functions.invoke<SponsorInquiryResult>('sponsor-inquiry', {
+    body: {
+      company: params.company,
+      contact_name: params.contactName,
+      email: params.email,
+      message: params.message,
+      source: params.source,
+    },
+  });
+
+  if (error) {
+    let message = 'Something went wrong. Please try again.';
+    const ctx = (error as { context?: Response }).context;
+    if (ctx && typeof ctx.json === 'function') {
+      try {
+        const payload = (await ctx.json()) as SponsorInquiryResult;
+        if (payload?.error) message = payload.error;
+      } catch {
+        // ignore parse errors, keep default message
+      }
+    }
+    return { ok: false, error: message };
+  }
+
+  return data ?? { ok: false, error: 'Empty response from server.' };
+}
