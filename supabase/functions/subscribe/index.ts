@@ -44,20 +44,20 @@ interface WelcomeCopy {
 function welcomeCopy(type: 'newsletter' | 'event', eventKey: string | null): WelcomeCopy {
   if (type === 'event') {
     return {
-      subject: "You're on the list — we'll let you know",
+      subject: "You're on the list. We'll let you know",
       html: `
         <div style="font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 480px; margin: 0 auto; color: #0f172a;">
           <h1 style="font-size: 20px;">You're on the list.</h1>
           <p style="font-size: 15px; line-height: 1.6; color: #334155;">
             Thanks for your interest${eventKey ? ` in <strong>${eventKey}</strong>` : ''}.
-            We'll email you the moment applications open — no spam in between.
+            We'll email you the moment applications open, with no spam in between.
           </p>
-          <p style="font-size: 13px; color: #64748b;">— Laurier Analytics &amp; Statistics</p>
+          <p style="font-size: 13px; color: #64748b;">Laurier Analytics &amp; Statistics</p>
         </div>`,
     };
   }
   return {
-    subject: "You're subscribed — the signal, minus the noise",
+    subject: "You're subscribed: the signal, minus the noise",
     html: `
       <div style="font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 480px; margin: 0 auto; color: #0f172a;">
         <h1 style="font-size: 20px;">You're on the list.</h1>
@@ -65,7 +65,7 @@ function welcomeCopy(type: 'newsletter' | 'event', eventKey: string | null): Wel
           Every two weeks we'll send upcoming events, application deadlines, internship
           postings, and one chart worth your attention. That's it.
         </p>
-        <p style="font-size: 13px; color: #64748b;">— Laurier Analytics &amp; Statistics</p>
+        <p style="font-size: 13px; color: #64748b;">Laurier Analytics &amp; Statistics</p>
       </div>`,
   };
 }

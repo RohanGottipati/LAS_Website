@@ -86,16 +86,16 @@ export const faqs = [
   a: 'All of them. We draw heavily from BBA, Financial Math, Data Science, Computer Science and Economics, but every Laurier student is welcome regardless of faculty or year.'
 },
 {
-  q: 'Is there a membership fee?',
-  a: 'General membership is free. Some flagship events (the datathon banquet, for example) have a small ticket cost to cover food and venue.'
+  q: 'I’m interested in data analytics, but I don’t know where to start. Is LAS for me?',
+  a: 'Definitely. That is exactly who we are built for. Start with the Analytics Bootcamp, which assumes zero background and takes you from a blank spreadsheet to your first Python notebook. From there, workshops, case nights and the datathon give you low-pressure ways to build real skills alongside people starting from the same place.'
 },
 {
-  q: 'How do I join the executive team?',
-  a: 'Applications open every March for the following academic year, plus a smaller round in September. Subscribe to the newsletter and we will send the form the day it opens.'
+  q: 'Are LAS events useful if I’m studying business, economics, or another field outside data science?',
+  a: 'Yes. Analytics is strongest when it meets a real domain, and our members come from BBA, Economics, Financial Math and beyond. Whether you want to read markets, model policy or make sharper business decisions, you will find events and teammates that connect data to your field.'
 },
 {
-  q: 'Where do events happen?',
-  a: 'Mostly the Lazaridis School and the Science Building on the Waterloo campus, with a few hybrid sessions streamed for Brantford students.'
+  q: 'Can LAS help me explore careers in analytics and meet people working in the field?',
+  a: 'That is a core part of what we do. Speaker nights, mentorship and partner datathons put you in front of analysts, quants and product leads from industry, and the network of alumni and peers you build here is often the fastest route to internships and full-time roles.'
 }];
 
 
