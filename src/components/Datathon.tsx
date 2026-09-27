@@ -73,7 +73,7 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
                     className={`col-start-1 row-start-1 ${reduced ? '' : 'transition-opacity duration-200 ease-out'}`}
                     style={{ opacity: active ? 1 : 0, pointerEvents: active ? 'auto' : 'none' }}
                     aria-hidden={!active}
-                    inert={!active}>
+                    inert={!active ? '' : undefined}>
                     <p className="font-display text-2xl tracking-[-0.01em] text-paper sm:text-[1.75rem]">{item.title}</p>
                     <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-paper/60">{item.summary}</p>
                   </div>
@@ -91,7 +91,7 @@ export function Datathon({ cellWidth = 10, cellHeight = 15 }: DatathonProps) {
                   className={`col-start-1 row-start-1 h-full ${reduced ? '' : 'transition-opacity duration-200 ease-out'}`}
                   style={{ opacity: active ? 1 : 0, pointerEvents: active ? 'auto' : 'none' }}
                   aria-hidden={!active}
-                  inert={!active}>
+                  inert={!active ? '' : undefined}>
                   {item.images.length > 0 ?
                     <PhotoReel images={item.images} /> :
                     <div className="h-full border border-paper/10 bg-panel" />
