@@ -1,0 +1,17 @@
+{
+  "name": "Laurier Analytics Society",
+  "short_name": "LAS",
+  "description": "Wilfrid Laurier University's student-run data & analytics community.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070b0d",
+  "theme_color": "#070b0d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
