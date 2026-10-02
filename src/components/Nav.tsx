@@ -25,8 +25,15 @@ export function Nav() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false);
     };
+    const onResize = () => {
+      if (window.innerWidth >= 768) setOpen(false);
+    };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
+    };
   }, [open]);
 
   return (
@@ -37,7 +44,7 @@ export function Nav() {
         }>
         
         <nav aria-label="Primary" className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 sm:px-8">
-          <a href="#top" className="group flex items-center gap-3" aria-label="Laurier Analytics Society, back to top">
+          <a href="#top" onClick={() => setOpen(false)} className="group flex items-center gap-3" aria-label="Laurier Analytics Society, back to top">
             <Logo className="h-7 w-[63px]" interactive />
             <span className="hidden whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.16em] text-paper/55 transition-colors duration-300 group-hover:text-paper/80 sm:block">
               Laurier Analytics Society
@@ -79,7 +86,7 @@ export function Nav() {
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              className="grid h-10 w-10 place-items-center border border-paper/10 text-paper/80 transition-colors duration-300 hover:border-cyan/40 hover:text-cyan md:hidden">
+              className="grid h-11 w-11 place-items-center border border-paper/10 text-paper/80 transition-colors duration-300 hover:border-cyan/40 hover:text-cyan md:hidden">
               
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
@@ -96,9 +103,9 @@ export function Nav() {
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="overflow-hidden border-b border-cyan/20 bg-ink md:hidden">
+          className="max-h-[calc(100svh-4rem)] overflow-y-auto border-b border-cyan/20 bg-ink md:hidden">
           
-            <ul className="px-5 py-3">
+            <ul className="mx-auto max-w-[1400px] px-5 py-3 sm:px-8">
               {navLinks.map((link, i) =>
             <motion.li
               key={link.href}
@@ -109,7 +116,7 @@ export function Nav() {
                   <a
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-between border-b border-paper/5 py-3 font-mono text-[13px] uppercase tracking-[0.14em] text-paper/80">
+                className="flex min-h-12 items-center justify-between border-b border-paper/5 py-3 font-mono text-[13px] uppercase tracking-[0.14em] text-paper/80">
                 
                     {link.label}
                     <ArrowUpRight className="h-3.5 w-3.5 text-cyan/70" />
@@ -120,7 +127,7 @@ export function Nav() {
                 <a
                 href="#newsletter"
                 onClick={() => setOpen(false)}
-                className="mt-3 flex items-center justify-between py-3 font-heading text-sm text-cyan">
+                className="mt-3 flex min-h-12 items-center justify-between py-3 font-heading text-sm text-cyan">
                 
                   Join the society
                   <ArrowUpRight className="h-3.5 w-3.5" />

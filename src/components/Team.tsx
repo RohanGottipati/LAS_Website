@@ -29,7 +29,7 @@ function AsciiPortrait({ seed, hovered }: {seed: string;hovered: boolean;}) {
   return (
     <div
       aria-hidden="true"
-      className="grid select-none font-mono text-[11px] leading-[1.15]"
+      className="grid select-none font-mono text-[11px] leading-[1.15] min-[380px]:text-[8px] sm:text-[11px]"
       style={{ gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))` }}>
       
       {grid.map((cell, i) => {
@@ -56,7 +56,7 @@ export function Team() {
   const [active, setActive] = useState<string | null>(null);
 
   return (
-    <section id="team" className="border-b border-paper/10 py-24 sm:py-32">
+    <section id="team" className="border-b border-paper/10 py-16 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <SectionHeading
           align="center"
@@ -70,7 +70,7 @@ export function Team() {
           </a>
         </div>
 
-        <div className="mt-14 grid gap-px bg-paper/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-px bg-paper/10 min-[380px]:grid-cols-2 sm:mt-14 lg:grid-cols-4">
           {team.map((member, i) =>
           <motion.article
             key={member.name}
@@ -84,16 +84,16 @@ export function Team() {
             onMouseLeave={() => setActive(null)}
             onFocus={() => setActive(member.name)}
             onBlur={() => setActive(null)}
-            className="group relative overflow-hidden bg-panel p-6 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-cyan/70">
+            className="group relative min-w-0 overflow-hidden bg-panel p-4 outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-cyan/70 sm:p-6">
             
               <span className="pointer-events-none absolute inset-0 bg-cyan/[0.04] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="relative overflow-hidden border border-paper/10 bg-ink/60 p-4">
+              <div className="relative overflow-hidden border border-paper/10 bg-ink/60 p-2 sm:p-4">
                 <AsciiPortrait seed={member.name} hovered={active === member.name} />
               </div>
-              <h3 className="relative mt-5 font-display text-2xl text-paper">{member.name}</h3>
-              <p className="relative mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan/80">{member.role}</p>
+              <h3 className="relative mt-4 font-display text-[1.35rem] leading-tight text-paper sm:mt-5 sm:text-2xl">{member.name}</h3>
+              <p className="relative mt-2 break-words font-mono text-[10px] uppercase tracking-[0.12em] text-cyan/80 sm:mt-1 sm:text-[11px] sm:tracking-[0.18em]">{member.role}</p>
               {member.focus ?
-              <p className="relative mt-2 text-[13px] text-paper/45">{member.focus}</p> :
+              <p className="relative mt-2 text-[12px] leading-snug text-paper/45 sm:text-[13px]">{member.focus}</p> :
               null}
             </motion.article>
           )}

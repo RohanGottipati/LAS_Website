@@ -9,7 +9,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="border-b border-paper/10 py-24 sm:py-32">
+    <section id="faq" className="border-b border-paper/10 py-16 sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <SectionHeading
           align="center"
@@ -27,7 +27,7 @@ export function Faq() {
           </a>
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto mt-14 max-w-3xl">
+        <Reveal delay={0.1} className="mx-auto mt-10 max-w-3xl sm:mt-14">
           <div className="w-full border-t border-paper/10">
             {faqs.map((item, i) =>
               <FaqRow
@@ -70,13 +70,13 @@ function FaqRow({
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-6 py-5 text-left font-heading text-[15px] text-paper">
-        <span className="flex items-baseline gap-4">
-          <span className="font-mono text-[11px] text-cyan/70">0{index + 1}</span>
-          {question}
+        className="flex min-h-14 w-full items-start justify-between gap-3 py-4 text-left font-heading text-[15px] text-paper sm:items-center sm:gap-6 sm:py-5">
+        <span className="flex min-w-0 items-baseline gap-3 sm:gap-4">
+          <span className="shrink-0 font-mono text-[11px] text-cyan/70">0{index + 1}</span>
+          <span>{question}</span>
         </span>
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-paper/50 ${
+          className={`mt-0.5 h-4 w-4 shrink-0 text-paper/50 sm:mt-0 ${
             reduced ? '' : 'transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]'
           } ${isOpen ? 'rotate-180 text-cyan/80' : ''}`} />
       </button>
@@ -90,7 +90,7 @@ function FaqRow({
         } ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
         <div className="overflow-hidden">
           <p
-            className={`pb-6 pl-[2.1rem] pr-6 text-[14px] leading-relaxed text-paper/60 ${
+            className={`pb-6 pl-[1.65rem] pr-1 text-[14px] leading-relaxed text-paper/60 sm:pl-[2.1rem] sm:pr-6 ${
               reduced ? '' : 'transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]'
             } ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
             {answer}

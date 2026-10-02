@@ -37,8 +37,8 @@ export function About() {
   }, []);
 
   return (
-    <section id="about" className="relative border-b border-paper/10 py-24 sm:py-32">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
+    <section id="about" className="relative border-b border-paper/10 py-16 sm:py-32">
+      <div className="mx-auto grid max-w-[1400px] gap-10 px-5 sm:gap-14 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
         <div className="text-center">
           <SectionHeading align="center" index="01 / About" title="A Society built around *data.*" />
 
@@ -54,7 +54,7 @@ export function About() {
         <Reveal delay={0.12}>
           <div
             ref={ref}
-            className="relative overflow-hidden border border-paper/10 bg-panel shadow-[0_40px_120px_-60px_rgba(94,234,212,0.22)]">
+            className="relative min-w-0 overflow-hidden border border-paper/10 bg-panel shadow-[0_40px_120px_-60px_rgba(94,234,212,0.22)]">
             
             <div className="flex items-center gap-2 border-b border-paper/10 bg-cyan/[0.03] px-4 py-3">
               <span className="h-2.5 w-2.5 rounded-full bg-heat/80" />
@@ -69,12 +69,12 @@ export function About() {
             </div>
             <pre
               aria-label="Python snippet describing the society"
-              className="overflow-x-auto px-5 py-6 font-mono text-[12.5px] leading-[1.85] sm:text-[13px]">
+              className="min-w-0 overflow-hidden px-3 py-5 font-mono text-[11px] leading-[1.75] sm:overflow-x-auto sm:px-5 sm:py-6 sm:text-[13px]">
               
               {typed.map((line, i) =>
-              <div key={i} className="flex gap-4">
-                  <span className="w-5 shrink-0 select-none text-right text-paper/25">{i + 1}</span>
-                  <span style={{ paddingLeft: CODE_LINES[i].indent * 20 }}>{tokenize(line)}</span>
+              <div key={i} className="flex min-w-0 gap-2 sm:gap-4">
+                  <span className="w-4 shrink-0 select-none text-right text-paper/25 sm:w-5">{i + 1}</span>
+                  <span className="min-w-0 whitespace-pre-wrap [overflow-wrap:anywhere] sm:whitespace-pre sm:[overflow-wrap:normal]" style={{ paddingLeft: CODE_LINES[i].indent * 12 }}>{tokenize(line)}</span>
                 </div>
               )}
             </pre>
@@ -95,7 +95,7 @@ function tokenize(line: string) {
   const nodes: React.ReactNode[] = [];
   let m: RegExpExecArray | null;
   let i = 0;
-  while (m = re.exec(line)) {
+  while ((m = re.exec(line)) !== null) {
     const [tok, str, kw, num, ident, punct] = m;
     let cls = 'text-paper/85';
     if (str) cls = 'text-cyan';else

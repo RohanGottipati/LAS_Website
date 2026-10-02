@@ -18,7 +18,7 @@ export function Hero({ ready = true }: HeroProps) {
   });
 
   return (
-    <section id="top" className="relative isolate flex min-h-screen items-center justify-center overflow-hidden border-b border-paper/10">
+    <section id="top" className="relative isolate flex min-h-[100svh] items-center justify-center overflow-hidden border-b border-paper/10">
       <div className="absolute inset-0 -z-10 opacity-70">
         <AsciiField
           className="h-full w-full"
@@ -31,14 +31,14 @@ export function Hero({ ready = true }: HeroProps) {
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(7,11,13,0.92)_0%,rgba(7,11,13,0.72)_38%,rgba(7,11,13,0.28)_100%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(94,234,212,0.07)_0%,transparent_58%)]" />
-      <div className="relative mx-auto flex w-full max-w-[1400px] flex-col items-center px-5 py-28 text-center sm:px-8">
+      <div className="relative mx-auto flex w-full max-w-[1400px] flex-col items-center px-5 py-24 text-center sm:px-8 sm:py-28">
         <motion.h1
           {...enter(0.1)}
-          className="max-w-5xl font-display text-[2.4rem] leading-[1.05] tracking-[-0.02em] text-paper sm:text-5xl lg:text-6xl">
+          className="max-w-5xl font-display text-[clamp(2.25rem,10vw,3rem)] leading-[1.05] tracking-[-0.02em] text-paper sm:text-5xl lg:text-6xl">
           Laurier Analytics Society
         </motion.h1>
 
-        <motion.div {...enter(0.35)} className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <motion.div {...enter(0.35)} className="mt-8 flex w-full flex-col items-stretch justify-center gap-3 min-[380px]:w-auto min-[380px]:flex-row sm:mt-10">
           <a href="#newsletter" className="btn-signal" data-cursor="join">
             Join the society
             <ArrowUpRight className="h-4 w-4" />
