@@ -16,14 +16,18 @@ export const aboutParagraphs = [
 
 
 export const team = [
-{ name: 'Amara Singh', role: 'President', focus: 'BBA + Data Science' },
-{ name: 'Daniel Okafor', role: 'VP Operations', focus: 'Financial Math' },
-{ name: 'Priya Raman', role: 'VP Analytics', focus: 'Computer Science' },
-{ name: 'Ethan Wolfe', role: 'VP Events', focus: 'Economics' },
-{ name: 'Mei Tanaka', role: 'VP Partnerships', focus: 'BBA + Finance' },
-{ name: 'Omar Haddad', role: 'VP Marketing', focus: 'Digital Media' },
-{ name: 'Sofia Castillo', role: 'Director, Datathon', focus: 'Data Science' },
-{ name: 'Liam Brooks', role: 'Director, Education', focus: 'Statistics' }];
+{ name: 'Jana Nazer', role: 'Executive', focus: '' },
+{ name: 'Manatt Bhardwaj', role: 'Executive', focus: '' },
+{ name: 'David Zhao', role: 'Executive', focus: '' },
+{ name: 'Emaad Qazi', role: 'Executive', focus: '' },
+{ name: 'James Palaypayon', role: 'Executive', focus: '' },
+{ name: 'Kelly Tram', role: 'Executive', focus: '' },
+{ name: 'Mahnoor Ehsan', role: 'Executive', focus: '' },
+{ name: 'Rida Shahid', role: 'Executive', focus: '' },
+{ name: 'Rohan Gottipati', role: 'Executive', focus: '' },
+{ name: 'Sophia Thai', role: 'Executive', focus: '' },
+{ name: 'Tharan Harikrishnan', role: 'Executive', focus: '' },
+{ name: 'Yashika Sharma', role: 'Executive', focus: '' }];
 
 
 export const datathonYears = [

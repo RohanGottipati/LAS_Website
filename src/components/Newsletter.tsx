@@ -73,7 +73,7 @@ export function Newsletter({ cellWidth = 9, cellHeight = 14 }: NewsletterProps) 
             <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80">05 / Join us</p>
           </Reveal>
           <h2 className="mt-5 font-display text-5xl leading-[1] tracking-tight text-paper sm:text-7xl">
-            <WordReveal text="Get the signal, *skip the noise.*" delay={0.05} />
+            <WordReveal text="Stay in *the loop.*" delay={0.05} />
           </h2>
           <Reveal delay={0.12}>
             <p className="mt-4 text-[15px] leading-relaxed text-paper/60">

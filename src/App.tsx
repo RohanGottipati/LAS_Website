@@ -38,7 +38,7 @@ export function App({
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
-    document.title = 'Laurier Analytics Society (LAS) — Data & Analytics Club at WLU';
+    document.title = 'Laurier Analytics Society (LAS) - Data & Analytics Club at WLU';
   }, []);
 
   // Inject FAQ structured data from the same source as the visible FAQ, so the

@@ -107,7 +107,7 @@ export function Sponsors({ cellWidth = 9, cellHeight = 14 }: SponsorsProps) {
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-cyan/80">06 / Partners</p>
             </Reveal>
             <h2 className="mt-5 font-display text-5xl leading-[1] tracking-tight text-paper sm:text-6xl">
-              <WordReveal text="Partner with *the signal.*" delay={0.05} />
+              <WordReveal text="Partner *with us.*" delay={0.05} />
             </h2>
             <Reveal delay={0.12}>
               <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/60">

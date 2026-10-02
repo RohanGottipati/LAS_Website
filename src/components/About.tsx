@@ -40,7 +40,7 @@ export function About() {
     <section id="about" className="relative border-b border-paper/10 py-24 sm:py-32">
       <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20">
         <div className="text-center">
-          <SectionHeading align="center" index="01 / About" title="A Society built around *evidence.*" />
+          <SectionHeading align="center" index="01 / About" title="A Society built around *data.*" />
 
           <div className="mt-8 space-y-5">
             {aboutParagraphs.map((p, i) =>

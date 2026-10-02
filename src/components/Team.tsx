@@ -61,7 +61,7 @@ export function Team() {
         <SectionHeading
           align="center"
           index="03 / Our Team"
-          title="38 executives. *One shared spreadsheet.*"
+          title="38 executives. *One team.*"
           description="Meet the portfolio leads, the people who run the workshops, wrangle the sponsors, and stay up late cleaning the datathon datasets." />
         
         <div className="mt-8 flex justify-center">
@@ -92,7 +92,9 @@ export function Team() {
               </div>
               <h3 className="relative mt-5 font-display text-2xl text-paper">{member.name}</h3>
               <p className="relative mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-cyan/80">{member.role}</p>
-              <p className="relative mt-2 text-[13px] text-paper/45">{member.focus}</p>
+              {member.focus ?
+              <p className="relative mt-2 text-[13px] text-paper/45">{member.focus}</p> :
+              null}
             </motion.article>
           )}
         </div>

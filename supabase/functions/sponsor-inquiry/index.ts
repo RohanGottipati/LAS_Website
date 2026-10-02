@@ -79,7 +79,7 @@ async function notifyTeam(inquiry: {
         from: FROM_ADDRESS,
         to: [NOTIFY_TO],
         reply_to: inquiry.email,
-        subject: `Sponsor inquiry — ${inquiry.company}`,
+        subject: `Sponsor inquiry: ${inquiry.company}`,
         html,
       }),
     });

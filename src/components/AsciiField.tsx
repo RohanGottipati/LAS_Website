@@ -65,7 +65,7 @@ export function AsciiField({
 
     // Colour + alpha lookup, keyed by (value level, spatial level). Baked once
     // so the per-cell paint never calls heatmap()/hsv2rgb or allocates a colour
-    // string — those were the main per-frame cost that starved scrolling.
+    // string. Those were the main per-frame cost that starved scrolling.
     const lut: string[] = new Array(V_LEVELS * S_LEVELS);
     for (let vl = 0; vl < V_LEVELS; vl++) {
       const vc = vl / (V_LEVELS - 1);
